@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+      <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.Storage.js"></script>
+    <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            var userId = getUrlVars()["id"];
+            var userName = getUrlVars()["username"];
+            var reportName = getUrlVars()["reportName"];
+            var reportGuid = getUrlVars()["reportGuid"];
+            var versionGuid = getUrlVars()["versionGuid"];
+            var pageGuid = getUrlVars()["pageGuid"];
+            $.ajax({
+                type: "POST",
+                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                url: "WebService.asmx/SendEmailReport",
+                //data: "{'id': '" + Id + "'}",
+                data: "{'username': '" + userName + "','userId':'" + userId + "','reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','reportName':'" + reportName + "','topPageGuid':'"+pageGuid+"'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("in load reports");
+                    if (response != null && response != "") {
+                        var prods = response.d;
+                       
+                    }
+                    else {
+                        alert("No data to display");
+                        alert(response.d);
+                    }
+                },
+                error: function (e) {
+                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                }
+
+            });
+
+        });
+
+
+
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

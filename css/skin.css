@@ -1,0 +1,94 @@
+.jcarousel-container {
+    background:url(../images/sliderBg.png) no-repeat left top; width:1000px; height:214px; margin-bottom:15px; width:1000px; height:190px;
+	padding:20px 0 0 0;
+}
+.jcarousel-direction-rtl {
+	direction: rtl;
+}
+.jcarousel-container-horizontal {
+    
+}
+.jcarousel-clip {
+    overflow: hidden;
+}
+.jcarousel-clip-horizontal {
+    width:  870px;
+}
+.jcarousel-item {
+	border:1px solid #212121;
+}
+
+.jcarousel-clip ul li { position:relative;}
+
+.jcarousel-clip ul li  a img { height: 160px; width: 198px; position:absolute; top:0; left: 0;}
+.jcarousel-clip  a span.sliderText {  margin:8px 0 4px 0; color:#ffffff; display:block; background:#000000; z-index:999999; line-height:25px; height:25px; position:absolute; top: 125px;
+    width: 198px; }
+/**
+ * Additional styles for the controls.
+ */
+.jcarousel-control {
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+
+.jcarousel-control a {
+    font-size: 12px;
+    text-decoration: none;
+    padding: 0 5px;
+    margin: 0 0 5px 0;
+    border: 1px solid #13739b;
+    color: #eee;
+    background-color: #4088b8;
+    font-weight: bold;
+}
+
+.jcarousel-control a:focus,
+.jcarousel-control a:active {
+    outline: none;
+}
+
+.jcarousel-scroll {
+    margin-top: 10px;
+    text-align: center;
+	position:absolute;
+	left:0; top:0;
+}
+
+.jcarousel-scroll form {
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel-scroll select {
+    left: 783px;
+    position: absolute;
+    top: -50px;
+	border:1px solid #003c91; background:#ffffff; padding:2px; width:250px; float:right; margin-right:10px; margin-top:8px;
+}
+
+#mycarousel-next
+ {
+	 background:url(../images/sliderControll.png) no-repeat 0 -37px;
+	 width:37px;
+	 height:37px;
+    cursor: pointer;
+    margin-bottom: -10px;
+    text-decoration: underline;
+    font-size: 11px;
+	position:absolute;
+	left: 7px;
+	top:69px;
+}
+#mycarousel-prev
+{
+	background:url(../images/sliderControll.png) no-repeat left top;
+	 width:37px;
+	 height:37px;
+    cursor: pointer;
+    margin-bottom: -10px;
+    text-decoration: underline;
+    font-size: 11px;
+	position:absolute;
+	top: 69px;
+	left: 956px;
+}

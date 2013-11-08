@@ -1,0 +1,3 @@
+style css file is for website style
+validationEngine.jquery and template css files are for validation on signup fields on home page
+global and skin.css is for jquery banner

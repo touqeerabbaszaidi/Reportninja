@@ -1,0 +1,147 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+    
+}
+
+/*home_container {
+background-image: url('http://rnws1.2bvision.com/Images/splash-background.png');
+background-repeat: no-repeat;
+background-size: 100%;
+background-position:top;
+background-attachment:fixed;
+position: fixed;
+top: 0;
+left: 0;
+height:100%;
+width:100%;
+}
+
+.buttons_container {
+position:absolute;
+bottom:4%;
+width:90%;
+padding-left:5%;
+}
+.home_button {
+            
+background-color:cornflowerblue;
+width:100%;
+            
+}
+.button {
+            
+width:100%;
+background-color:#3797d4;
+border:none;
+height:33.5px;
+            
+}
+.button:hover {
+background-color:#1a4b4f;
+}
+.button p {
+font-size:18px;
+font-family:Arial;
+color:white;
+padding:7px 0 0 7px;
+margin-top:1.5%;
+}
+.arrow {
+background:url('Images/arrow.png');
+height:17px;
+width:35px;
+            
+float:right;
+margin: -25px 12px 0 0px;
+            
+}*/
+
+.container {
+    background-image: url('http://rnws1.2bvision.com/Images/splash-background.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position:top;
+    background-attachment:fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    /*min-height:550px;
+    min-width:370px;*/
+    height:100%;
+    width:100%;
+}
+
+.input-text
+{
+	font-size:20px; 
+    font-family:Arial; 
+    /*margin:15px 0 0 0px;*/ 
+    color:white;
+}
+.input-area {
+    margin: 2% 0 0 0px;
+    width: 98%;
+    padding-top:2.5%;
+    padding-bottom:2.5%;
+    border: solid 1px white;
+    background-color: #1a4b4f;
+    color:white;
+    padding-left:1.8%;
+}
+::-webkit-input-placeholder { color:white; font-family:Arial; font-size:15px;}
+::-moz-placeholder { color:white; font-family:Arial; font-size:15px;} /* firefox 19+ */
+:-ms-input-placeholder { color:white; font-family:Arial; font-size:15px; } /* ie */
+input:-moz-placeholder { color:white; font-family:Arial; font-size:15px; }
+
+.submit-btn
+{
+   	/*margin:4% auto 0px 1%;*/ 
+    margin: 4% auto 0px 0%;
+    float:left; width:100%; height:35px;
+	background:#3797d4;
+	border:1px solid white;
+	/*box-shadow:0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px #FEFEFE, 0 5px 3px 3px #D2D2D2;*/
+	
+}
+.submit-btn:hover 
+{
+	/*margin:4% auto 0px 1%;*/ 
+    float:left;  width:100%; height:35px;
+	/*background:#17bfe5;*/
+	border:1px solid white;
+    /*box-shadow:0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px #FEFEFE, 0 5px 3px 3px #D2D2D2;*/
+	
+}
+
+
+.schoolsList {text-align: center;margin: 105px auto 0 auto;font-size: 15px;border: 1px solid black;width: 95%;padding: 5px;background-color: #3b5998;color:White;}
+.container > header{
+	padding: 20px 30px 10px 30px;
+	margin: 0px 20px 10px 20px;
+	position: relative;
+	display: block;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    text-align: center;
+}
+.container > header h1{
+	font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+	font-size: 35px;
+	line-height: 35px;
+	position: relative;
+	font-weight: 400;
+	color: rgba(26,89,120,0.9);
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    padding: 0px 0px 5px 0px;
+}
+.container > header h1 span{
+	color: #7cbcd6;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.8);
+}
+.container > header h2{
+	font-size: 16px;
+	font-style: italic;
+	color: #2d6277;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.8);
+}
