@@ -5,7 +5,7 @@
     <style type="text/css">
 
         .home_container {
-            background-image: url('http://rnws1.2bvision.com/Images/splash-background.png');
+            background-image: url('../Images/splash-background.png');
 	        background-repeat: no-repeat;
 	        background-size: 100%;
 	        background-position:top;
@@ -74,6 +74,13 @@
             $.Storage.set("id", Id);
             //alert($.Storage.get("id"));
             $.Storage.set("username", username);
+			
+			$("#button1").click( function() {
+			MyReports();
+			
+			});
+			
+			
             //alert($.Storage.get("username"));
             //$("#button1").click(function MyReports() {
             //    var varID;
@@ -112,7 +119,7 @@
     <div class="home_container">
         <div class="buttons_container">
             <div class="home_button">
-                <div class="button" id="button1" onclick="MyReports();" >
+                <div class="button" id="button1" >
                     <p>MY REPORTS</p>
                     </div>
                 <div class="arrow">
