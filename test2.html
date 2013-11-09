@@ -75,9 +75,7 @@
             //alert($.Storage.get("id"));
             $.Storage.set("username", username);
 			
-            $("#button1").click(function () {
-                alert("button clicked");
-			    MyReports();
+          
 			
 			});
 			
@@ -121,9 +119,10 @@
     <div class="home_container">
         <div class="buttons_container">
             <div class="home_button">
-                <a class="button" id="button1" >
+                <!--<a class="button" id="button1" >
                     MY REPORTS
-                    </a>
+                    </a>-->
+                <input class="button" type="button" id="button1" onclick="MyReports()" />
                 <div class="arrow">
 
                 </div>
