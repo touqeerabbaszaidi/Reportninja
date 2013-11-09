@@ -59,10 +59,13 @@
                             ///alert(splitString[0] + splitString[1]);
                             window.location = "test2.html?id=" + splitString[0] + "&username=" + splitString[1];
 
-                            var ID = $.Storage.set("id", splitString[0]);
+                            var ID = splitString[0];
                             alert(ID);
-                            var uusername = $.Storage.set("username", splitString[1]);
-                            alert(uusername);
+                            $.Storage.set("id", ID);
+                            alert($.Storage.set("id", ID));
+                            var Uname = splitString[1];
+                            $.Storage.set("username", Uname);
+                            alert($.Storage.set("username", Uname));
                             
                             // alert("wl");
                            //window.location.replace("http://rnws1.2bvision.com/test2.html?id=" + splitString[0] + "&username=" + splitString[1]);
