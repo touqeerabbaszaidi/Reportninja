@@ -61,11 +61,12 @@
 
                             var ID = splitString[0];
                             alert(ID);
-                            $.Storage.set("id", ID);
-                            alert($.Storage.set("id", ID));
+                            var abc =    $.Storage.set("id", ID);
+                            alert(abc);
                             var Uname = splitString[1];
-                            $.Storage.set("username", Uname);
-                            alert($.Storage.set("username", Uname));
+                            alert(Uname);
+                            var bbbv = $.Storage.set("username", Uname);
+                            alert(bbbv);
                             
                             // alert("wl");
                            //window.location.replace("http://rnws1.2bvision.com/test2.html?id=" + splitString[0] + "&username=" + splitString[1]);
@@ -122,7 +123,7 @@
         }
         
     </script>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         function asd() {
             var thing = { plugin: 'jquery-json', version: 2.3 };
 
@@ -135,12 +136,12 @@
             sessionStorage.setitem("name", "value");
             // alert(sessionStorage.getitem("name"));
         }
-    </script>
-    <script type="text/javascript">
+    </script>-->
+    <!--<script type="text/javascript">
         function ShowResult() {
             alert(event.result.value);
         }
-    </script>
+    </script>-->
 </head>
 <body style="padding: 0px; margin: 0px">
     

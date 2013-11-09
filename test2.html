@@ -66,7 +66,7 @@
         $(document).ready(function () {
 
             alert("enter in test2");
-            alert("enter in my reports");
+           
             var username = $.Storage.get("username");
             alert(username);
             var Id = $.Storage.get("id");
@@ -84,23 +84,11 @@
           
 			
 			});
-			
-			
-            //alert($.Storage.get("username"));
-            //$("#button1").click(function MyReports() {
-            //    var varID;
-            //    alert("1");
-            //    varID = $.Storage.get("id");
-            //    alert(varID);
-            //    //window.location = "http://rnws1.2bvision.com/home.html";
-            //    window.location.href = "http://rnws1.2bvision.com/home.html?id=" + varID + "&username=" + username;
-            //    //alert("2");
-            //});
 
         function MyReports() {
-           
+            alert("enter in my reports");
                 //window.location = "http://rnws1.2bvision.com/home.html";
-            window.location.href = "Home.html?id=" + Id + "&username=" + username;
+            window.location = "Home.html?id=" + Id + "&username=" + username;
             //window.location.replace("http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username);
             //alert("2");
         }
