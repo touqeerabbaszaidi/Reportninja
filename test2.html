@@ -66,6 +66,11 @@
         $(document).ready(function () {
 
             alert("enter in test2");
+            alert("enter in my reports");
+            var username = $.Storage.get("username");
+            alert(username);
+            var Id = $.Storage.get("id");
+            alert(Id);
            // var Id;
             //$(".buttonDiv").hide();
             //var Id = 2;
@@ -93,11 +98,7 @@
             //});
 
         function MyReports() {
-            alert("enter in my reports");
-            var username = $.Storage.get("username");
-            alert(username);
-            var Id = $.Storage.get("id");
-            alert(Id);
+           
                 //window.location = "http://rnws1.2bvision.com/home.html";
             window.location.href = "Home.html?id=" + Id + "&username=" + username;
             //window.location.replace("http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username);
