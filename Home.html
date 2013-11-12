@@ -292,13 +292,13 @@
            // alert("Yes called");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
-            $.Storage.set("id", Id);
-            $.Storage.set("username", username);
+            //$.Storage.set("id", Id);
+           // $.Storage.set("username", username);
             if (flag == "true") {
                 $.ajax({
                     type: "POST",
-                    url:"http://rnws1.2bvision.com/WebService.asmx/LoadReports",
-                    //url: "WebService.asmx/LoadReports",
+                   /url:"http://rnws1.2bvision.com/WebService.asmx/LoadReports",
+                   // url: "WebService.asmx/LoadReports",
                     data: "{'id': '" + Id + "'}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -307,6 +307,7 @@
                         if (response != null && response != "") {
                          //   alert("success");
                             flag = "false";
+                            
                             var prods = response.d;
                             var myarray = prods.split(';');
                             for (var i = 0; i < myarray.length - 1; i++)
@@ -320,7 +321,7 @@
                                 else
                                 {
                                     //alert("else");
-                                    $("#accordion").append("<div class='accordion_head'> " + "<p class='heading3'>" + array[0] + "</p>" + "<div class='button_drop'>" + "</div>" + "</div>" + "<div>" + "<div class='sub_menu'> " + "<ul>" + "<li>" + "<a class='buttonDiv pop' id='" + array[0] + "," + array[4] + "," + array[5] + "' href='EditReport.htm?ReportName=" + array[0] + "&reportPassword=" + array[4] + "&reportId=" + array[5] + "'>" + "Edit" + "</a>" + "</li>" + "<li>" + "<div class='viewDiv' onclick=location.href='http://www.reportninja.org/MobileViewer?i=" + array[1] + "&v=" + array[2] + "&p=" + array[3] + "';>" + "<p class='buttonDiv' >" + "View" + "</p>" + "</div>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DownloadPdf.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Generate" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='sendReport.htm?id=" + Id + "&username=" + username + "&reportName=" + array[0] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Send" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='LockReport.htm?statusReport=" + array[6] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Lock" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DeleteReport.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "'>" + "Delete" + "</a>" + "</li>" + "</ul>" + "</div>" + "</div>");
+                                    $("#accordion").append("<div class='accordion_head'> " + "<p class='heading3'>" + array[0] + "</p>" + "<div class='button_drop'>" + "</div>" + "</div>" + "<div>" + "<div class='sub_menu'> " + "<ul>" + "<li>" + "<a class='buttonDiv pop' id='" + array[0] + "," + array[4] + "," + array[5] + "' href='EditReport.htm?ReportName=" + array[0] + "&reportPassword=" + array[4] + "&reportId=" + array[5] + "&Id=" + Id + "&username=" + username + "'>" + "Edit" + "</a>" + "</li>" + "<li>" + "<div class='viewDiv' onclick=location.href='http://www.reportninja.org/MobileViewer?i=" + array[1] + "&v=" + array[2] + "&p=" + array[3] + "';>" + "<p class='buttonDiv' >" + "View" + "</p>" + "</div>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DownloadPdf.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Generate" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='sendReport.htm?id=" + Id + "&username=" + username + "&reportName=" + array[0] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Send" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='LockReport.htm?statusReport=" + array[6] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "&Id=" + Id + "&username=" + username + "'>" + "Lock" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DeleteReport.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&Id=" + Id + "&username=" + username + "'>" + "Delete" + "</a>" + "</li>" + "</ul>" + "</div>" + "</div>");
                                 }
                                 //$("#divReports").append(array[0] + "<a class='pop' href='#'>" + "Send" + "</a>" + "<br/>");
                             }

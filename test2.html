@@ -64,36 +64,47 @@
     
     <script type="text/javascript">
         $(document).ready(function () {
-
-            alert("enter in test2");
-           
-            //var username = $.Storage.get("username");
-            //alert(username);
-            //var Id = $.Storage.get("id");
-            //alert(Id);
-           // var Id;
+            //alert("hey");
+            var Id;
             //$(".buttonDiv").hide();
             //var Id = 2;
-            //var Id = getUrlVars()["id"];
-            //var username = getUrlVars()["username"];
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
             //alert(Id);
-            //$.Storage.set("id", Id);
+           // $.Storage.set("id", Id);
             //alert($.Storage.get("id"));
            // $.Storage.set("username", username);
-			
-          
-			
-			});
+            //alert($.Storage.get("username"));
+            //$("#button1").click(function MyReports() {
+            //    var varID;
+            //    alert("1");
+            //    varID = $.Storage.get("id");
+            //    alert(varID);
+            //    //window.location = "http://rnws1.2bvision.com/home.html";
+            //    window.location.href = "http://rnws1.2bvision.com/home.html?id=" + varID + "&username=" + username;
+            //    //alert("2");
+            //});
+        });
 
-        function MyReports() {
-            alert("enter in my reports");
+            function MyReports() {
+           // var username = $.Storage.get("username");
+           // var Id = $.Storage.get("id");
                 //window.location = "http://rnws1.2bvision.com/home.html";
-            window.location = "Home.html?id=" + '2' + "&username=" + 'junaid';
+            window.location = "Home.html?id=" + Id + "&username=" + username;
             //window.location.replace("http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username);
             //alert("2");
         }
 
-     
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
        
      </script>
 </head>
@@ -101,10 +112,9 @@
     <div class="home_container">
         <div class="buttons_container">
             <div class="home_button">
-                <!--<a class="button" id="button1" >
-                    MY REPORTS
-                    </a>-->
-                <input class="button" type="button" id="button1" value="MY REPORTS" onclick="MyReports()" />
+                <div class="button" id="button1" onclick="MyReports();" >
+                    <p>MY REPORTS</p>
+                    </div>
                 <div class="arrow">
 
                 </div>

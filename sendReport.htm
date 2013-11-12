@@ -76,7 +76,7 @@
                             var prods = response.d;
                             if (prods == "Success") {
                                 alert("Report has been successfully sent.");
-                                window.location = "home.html?id=" + $.Storage.get("id") + "&username=" + $.Storage.get("username") + "";
+                                window.location = "home.html?id=" + userId + "&username=" + userName + "";
                             }
                         }
                         else {

@@ -9,17 +9,19 @@
     <script type="text/javascript">
         $(document).ready(function () {
             alert("lockreport");
-            var userId = getUrlVars()["id"];
+            var userId = getUrlVars()["Id"];
             var userName = getUrlVars()["username"];
             var reportName = getUrlVars()["reportName"];
             var reportGuid = getUrlVars()["reportGuid"];
             var versionGuid = getUrlVars()["versionGuid"];
             var pageGuid = getUrlVars()["pageGuid"];
             var status = getUrlVars()["statusReport"];
+            var Id = getUrlVars()["Id"];
+            var username = getUrlVars()["username"];
             $.ajax({
                 type: "POST",
                 url: "http://rnws1.2bvision.com/WebService.asmx/lockReport",
-               // url: "WebService.asmx/lockReport",
+                //url: "WebService.asmx/lockReport",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'statusLocked':'" + status + "','reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','pageGuid':'" + pageGuid + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -31,7 +33,7 @@
                         alert("<html><body><a href=''>click here</a></body></html>");
                         //alert(status+"<a href='index.html'>+'"click here'"+</a>+'" to create a new version of this report.");
                     }
-                    window.location = "home.htm?id=" + $.Storage.get("id") + "&username=" + $.Storage.get("username") + "";
+                    window.location = "home.htm?id=" + Id + "&username=" + username + "";
 
                     /*else {
                     alert("No data to display");

@@ -53,13 +53,15 @@
             var reportPassword = getUrlVars()["reportPassword"];
             var versionGuid = getUrlVars()["versionGuid"];
             var pageGuid = getUrlVars()["pageGuid"];
+            var Id = getUrlVars()["Id"];
+            var username = getUrlVars()["username"];
             $("#EditName").click(function () {
                 alert("Edit");
                 var reportName = document.getElementById('txtEditReportName').value
                 var reportPassword = document.getElementById('txtEditReportPassword').value
                 $.ajax({
                     type: "POST",
-                    url: "http://rnws1.2bvision.com/WebService.asmx/EditReport",
+                   url: "http://rnws1.2bvision.com/WebService.asmx/EditReport",
                     //url: "WebService.asmx/EditReport",
                     //data: "{'id': '" + Id + "'}",
                     data: "{'reportId':'" + reportId + "','reportName':'" + reportName + "','reportPassword':'" + reportPassword + "'}",
@@ -70,7 +72,7 @@
                         if (response != null && response != "") {
                             var prods = response.d;
                             alert(prods);
-                            window.location = "home.html?id=" + $.Storage.get("id") + "&username=" + $.Storage.get("username") + "";
+                            window.location = "home.html?id=" + Id + "&username=" + username + "";
                         }
                         else {
                             alert("No data to display");

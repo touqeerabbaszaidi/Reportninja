@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {
-            var userId = getUrlVars()["id"];
+            var userId = getUrlVars()["Id"];
             var userName = getUrlVars()["username"];
             var reportName = getUrlVars()["reportName"];
             var reportGuid = getUrlVars()["reportGuid"];
@@ -25,7 +25,7 @@
                 dataType: "json",
                 success: function (response) {
                     alert("Report Deleted");
-                    window.location = "home.htm?id=" + $.Storage.get("id") + "&username=" + $.Storage.get("username") + "";
+                    window.location = "home.htm?id=" + userId + "&username=" + userName + "";
 
                     /*else {
                     alert("No data to display");
