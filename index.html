@@ -39,8 +39,8 @@
             $.ajax({
 
                 type: "POST",
-                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                url: "WebService.asmx/btnLogIn_Click",
+                url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+               // url: "WebService.asmx/btnLogIn_Click",
                 //url: "http://rnws1.2bvision.com/WebService.asmx/btnLogIn_Click",
                 //url: "http://www.reportninja.org/WebServices/WebService.asmx/btnLogIn_Click",
                 data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
