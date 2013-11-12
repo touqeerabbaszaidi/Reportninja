@@ -65,12 +65,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             alert("hey");
-            var Id;
+            //var Id;
             //$(".buttonDiv").hide();
             //var Id = 2;
-            var Id = getUrlVars()["id"];
-            var username = getUrlVars()["username"];
-            alert(Id);
+            
            // $.Storage.set("id", Id);
             //alert($.Storage.get("id"));
            // $.Storage.set("username", username);
@@ -87,6 +85,9 @@
         });
 
         function MyReports() {
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            alert(Id);
             alert("my reports");
            // var username = $.Storage.get("username");
            // var Id = $.Storage.get("id");
