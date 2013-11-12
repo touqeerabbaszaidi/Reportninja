@@ -192,7 +192,7 @@
         // alert("Doc dot ready");
         $(document).ready(function () {
             $("#myReports").click(function () {
-               // alert("1");
+                alert("1");
                 setTimeout(function () {
                    // alert("before");
                     funreports();
@@ -289,7 +289,7 @@
         //}, 2000);
 
         function funreports() {
-           // alert("Yes called");
+            alert("Yes called");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             //$.Storage.set("id", Id);
@@ -303,7 +303,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                       // alert("success1");
+                        alert("success1");
                         if (response != null && response != "") {
                          //   alert("success");
                             flag = "false";
