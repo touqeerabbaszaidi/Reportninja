@@ -312,10 +312,10 @@
                             var prods = response.d;
                            
                             var myarray = prods.split(';');
-                             
+                            alert(myarray);
                             for (var i = 0; i < myarray.length - 1; i++)
                             {
-                                alert("forloop");
+                               
                                 var array = myarray[i].split(",");
                                 alert(array[6]);
                                 if (array[6] == "True")
