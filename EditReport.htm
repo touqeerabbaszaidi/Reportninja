@@ -56,7 +56,7 @@
             var Id = getUrlVars()["Id"];
             var username = getUrlVars()["username"];
             $("#EditName").click(function () {
-                alert("Edit");
+                //alert("Edit");
                 var reportName = document.getElementById('txtEditReportName').value
                 var reportPassword = document.getElementById('txtEditReportPassword').value
                 $.ajax({
@@ -68,7 +68,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        alert("in load reports");
+                        //alert("in load reports");
                         if (response != null && response != "") {
                             var prods = response.d;
                             alert(prods);

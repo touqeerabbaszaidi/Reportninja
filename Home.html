@@ -191,7 +191,15 @@
         var flag = "true";
         // alert("Doc dot ready");
         $(document).ready(function () {
-            alert("1");
+            setTimeout(function () {
+                // alert("before");
+                funreports();
+                //alert("after")
+            }, 1500);
+            //$("#sub_menu_top").hide();
+
+            return false;
+            //alert("1");
             $("#myReports").click(function () {
                 
                 setTimeout(function () {
