@@ -191,6 +191,14 @@
         var flag = "true";
         // alert("Doc dot ready");
         $(document).ready(function () {
+            var online = navigator.onLine;    // Detecting the internet connection
+            //alert(online);
+            if (online) {
+                // do your stuff
+            } else {
+                alert('You\'re Offline now...');
+                return false;
+            }
             setTimeout(function () {
                 // alert("before");
                 funreports();

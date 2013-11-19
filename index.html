@@ -11,13 +11,6 @@
         
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#submit").click(function () {
-                signIn();
-                //alert("button clicked.");
-                //                UserLogin();
-                //                LoginBusinessAdmin();
-                //                LoginBackOfficeUser();
-            });
             var online = navigator.onLine;    // Detecting the internet connection
             //alert(online);
             if (online) {
@@ -26,6 +19,14 @@
                 alert('You\'re Offline now...');
                 return false;
             }
+            $("#submit").click(function () {
+                signIn();
+                //alert("button clicked.");
+                //                UserLogin();
+                //                LoginBusinessAdmin();
+                //                LoginBackOfficeUser();
+            });
+           
 
         });
 

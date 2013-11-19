@@ -48,6 +48,14 @@
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
+            var online = navigator.onLine;    // Detecting the internet connection
+            //alert(online);
+            if (online) {
+                // do your stuff
+            } else {
+                alert('You\'re Offline now...');
+                return false;
+            }
             var reportId = getUrlVars()["reportId"];
             var reportName = getUrlVars()["reportName"];
             var reportPassword = getUrlVars()["reportPassword"];
