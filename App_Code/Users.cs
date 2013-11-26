@@ -274,7 +274,7 @@ public class Users
                 {
                     myParams = SqlHelperParameterCache.GetSpParameterSet(BVisionConfigurationManager.GetConnectionString(), "sp_Users");
                     myParams[0].Value = 5;
-                    myParams[1].Value = CustomEncryption.Decrypt(UserID);
+                    myParams[1].Value = Convert.ToString(UserID);
                     myParams[9].Value = CustomEncryption.Encrypt(Password);
                     myParams[27].Value = System.DateTime.Now;
                     SqlHelper.ExecuteNonQuery(transaction, CommandType.StoredProcedure, "sp_Users", myParams);
@@ -306,7 +306,7 @@ public class Users
                 {
                     myParams = SqlHelperParameterCache.GetSpParameterSet(BVisionConfigurationManager.GetConnectionString(), "sp_Users");
                     myParams[0].Value = 16;
-                    myParams[1].Value = CustomEncryption.Decrypt(UserID);
+                    myParams[1].Value = UserID;
                     myParams[7].Value = Username;
                     myParams[27].Value = System.DateTime.Now;
                     SqlHelper.ExecuteNonQuery(transaction, CommandType.StoredProcedure, "sp_Users", myParams);
@@ -341,7 +341,7 @@ public class Users
                     {
                         myParams = SqlHelperParameterCache.GetSpParameterSet(BVisionConfigurationManager.GetConnectionString(), "sp_Users");
                         myParams[0].Value = 17;
-                        myParams[1].Value = CustomEncryption.Decrypt(UserID);
+                        myParams[1].Value = UserID;
                         myParams[8].Value = Email;
                         myParams[24].Value = "No";
                         myParams[27].Value = System.DateTime.Now;
@@ -420,7 +420,7 @@ public class Users
                 {
                     myParams = SqlHelperParameterCache.GetSpParameterSet(BVisionConfigurationManager.GetConnectionString(), "sp_Users");
                     myParams[0].Value = 18;
-                    myParams[1].Value = CustomEncryption.Decrypt(UserID);
+                    myParams[1].Value = UserID;
                     myParams[13].Value = Address;
                     myParams[19].Value = Phone;
                     myParams[27].Value = System.DateTime.Now;
@@ -541,6 +541,23 @@ public class Users
         catch (Exception ex)
         {
 
+        }
+    }
+    public static DataTable GetUserDataByEmail(string Email)
+    {
+        DataTable dtUser = new DataTable();
+        try
+        {
+            SqlParameter[] myParams = SqlHelperParameterCache.GetSpParameterSet(BVisionConfigurationManager.GetConnectionString(), "sp_Users");
+            myParams[0].Value = 26;
+            myParams[8].Value = Email;
+            dtUser = SqlHelper.ExecuteDataset(BVisionConfigurationManager.GetConnectionString(), CommandType.StoredProcedure, "sp_Users", myParams).Tables[0];
+
+            return dtUser;
+        }
+        catch (Exception ex)
+        {
+            return dtUser;
         }
     }
 }

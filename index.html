@@ -11,14 +11,6 @@
         
     <script type="text/javascript">
         $(document).ready(function () {
-            var online = navigator.onLine;    // Detecting the internet connection
-            //alert(online);
-            if (online) {
-                // do your stuff
-            } else {
-                alert('You\'re Offline now...');
-                return false;
-            }
             $("#submit").click(function () {
                 signIn();
                 //alert("button clicked.");
@@ -26,7 +18,14 @@
                 //                LoginBusinessAdmin();
                 //                LoginBackOfficeUser();
             });
-           
+            //var online = navigator.onLine;    // Detecting the internet connection
+            ////alert(online);
+            //if (online) {
+            //    // do your stuff
+            //} else {
+            //    alert('You\'re Offline now...');
+            //    return false;
+            //}
 
         });
 
@@ -41,14 +40,14 @@
 
                 type: "POST",
                 //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-               // url: "WebService.asmx/btnLogIn_Click",
+              //  url: "WebService.asmx/btnLogIn_Click",
                 url: "http://rnws1.2bvision.com/WebService.asmx/btnLogIn_Click",
                 //url: "http://www.reportninja.org/WebServices/WebService.asmx/btnLogIn_Click",
                 data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                   //alert("Success");
+                   // alert("Success");
                     if (response != null && response != "") {
                        // alert("ifpart");
                         var prods = response.d;
@@ -60,7 +59,8 @@
                         {
                            // alert("Else Part");
                             var splitString = prods.split(",");
-                            window.location = "test2.html?id=" + splitString[0] + "&username=" + splitString[1];
+                           // var Email= document.getElementById("txtEmail")
+                            window.location = "test2.html?id=" + splitString[0] + "&username=" + splitString[1] + "&Email=" + document.getElementById("txtEmail").value;
                            // alert("wl");
                            //window.location.replace("http://rnws1.2bvision.com/test2.html?id=" + splitString[0] + "&username=" + splitString[1]);
                         }

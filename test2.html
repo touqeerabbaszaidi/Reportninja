@@ -64,14 +64,6 @@
     
     <script type="text/javascript">
         $(document).ready(function () {
-            var online = navigator.onLine;    // Detecting the internet connection
-            //alert(online);
-            if (online) {
-                // do your stuff
-            } else {
-                alert('You\'re Offline now...');
-                return false;
-            }
             //alert("hey");
             //var Id;
             //$(".buttonDiv").hide();
@@ -95,14 +87,23 @@
         function MyReports() {
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
-            //alert(Id);
-            //alert("my reports");
+            var Email = getUrlVars()["Email"];
+           // alert(Id);
+           // alert("my reports");
            // var username = $.Storage.get("username");
            // var Id = $.Storage.get("id");
                 //window.location = "http://rnws1.2bvision.com/home.html";
-            window.location = "Home.html?id=" + Id + "&username=" + username+"";
+            window.location = "Home.html?id=" + Id + "&username=" + username+"&Email="+ Email +"";
             //window.location.replace("http://rnws1.2bvision.com/home.html?id=" + Id + "&username=" + username);
             //alert("2");
+        }
+        function MyAcount() {
+            alert("MyAcount");
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "Account.html?id=" + Id + "&username=" + username + "&Email="+ Email +"";
+
         }
 
         function getUrlVars() {
@@ -130,7 +131,7 @@
                 </div>
             </div>
             <div class="home_button">
-                <div class="button" id="Div1">
+                <div class="button" id="Div1" onclick="MyAcount();">
                     <p>ACCOUNT</p>
                     </div>
                 <div class="arrow">

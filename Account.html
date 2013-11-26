@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <script src="js/jquery-1.4.min.js"></script>
+    <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.Storage.js"></script>
+    <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
+
+    <link href="Styles/style111.css" rel="stylesheet" />
+    <!--<style type="text/css">
+        .ui-accordion-header.ui-state-default {
+            background-color: #3797d4;
+            height: 40px;
+        }
+
+        .ui-accordion-header.ui-state-active {
+            background-color: #3797d4;
+            height: 40px;
+        }
+
+            .ui-accordion-header.ui-state-active .button_drop {
+                background: url('Images/after-click.png');
+                height: 20px;
+                width: 25px;
+            }
+
+        .viewDiv p {
+            margin-top: 0px;
+            padding: 9px;
+            font-family: Arial;
+            font-size: 17px;
+            color: white;
+        }
+
+        #sub_menu_top {
+            margin-top: 3px;
+            display: none;
+            background-color: black;
+            float: left;
+            width: 99%;
+            position: absolute;
+            margin-top: 45px;
+        }
+
+            #sub_menu_top ul li {
+                list-style-type: none;
+                list-style-type: none;
+                width: 100%;
+                background-color: #3797d4;
+                margin-top: 1px;
+                height: 37px;
+            }
+
+                #sub_menu_top ul li:hover {
+                    background-color: #1a4b4f;
+                }
+
+            #sub_menu_top ul {
+                margin-top: 1px;
+                -webkit-margin-before: 1px;
+                -webkit-margin-after: 1px;
+                -webkit-padding-start: 1px;
+            }
+
+                #sub_menu_top ul li a {
+                    font-family: Arial;
+                    font-size: 17px;
+                    color: white;
+                    padding: 9px;
+                    float: left;
+                    text-decoration: none;
+                }
+
+        .header_container {
+            width: 100%;
+            margin: 0 1%;
+        }
+
+        .header_right {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .logo {
+            float: left;
+            background: url('Images/logo.png') no-repeat;
+            height: 45px;
+            width: 46px;
+            margin-top: 0px;
+        }
+
+        .my_reports_text {
+            float: right;
+            width: 100px;
+            height: 100%;
+            padding-left: 10px;
+        }
+
+            .my_reports_text p {
+                color: white;
+                margin-top: 9px;
+                font-family: Arial;
+                font-size: 18px;
+            }
+
+        .header {
+            height: 45px;
+            background: url('Images/header-bg.png') repeat-x;
+            width: 100%;
+        }
+
+        .menu_button {
+            float: left;
+            width: 31px;
+            height: 25px;
+            background: url('Images/menuButton.png');
+            margin-left: 5px;
+            margin-top: 9px;
+        }
+
+        .heading3 {
+            font-size: 18px;
+            font-family: Arial;
+            color: white;
+            padding: 9px 0 0 5px;
+        }
+
+        .button_drop {
+            background: url('Images/before-click.png') no-repeat;
+            height: 25px;
+            width: 25px;
+            float: right;
+            margin: -38px 10px 0 0px;
+        }
+
+        .sub_menu {
+            width: 95%;
+            float: right;
+        }
+
+            .sub_menu ul {
+                margin-top: 1.5px;
+            }
+
+                .sub_menu ul li {
+                    list-style-type: none;
+                    width: 100%;
+                    background-color: #3797d4;
+                    margin-top: 1px;
+                    height: 37px;
+                }
+
+                    .sub_menu ul li:hover {
+                        background-color: #1a4b4f;
+                    }
+
+                    .sub_menu ul li a {
+                        font-family: Arial;
+                        font-size: 17px;
+                        color: white;
+                        padding: 9px;
+                        float: left;
+                        text-decoration: none;
+                    }
+    </style>-->
+    <script>
+        //function showDialog() {
+        //    $("#sub_menu_top").toggle("fast", function () {
+        //        if ($("#sub_menu_top").is(':visible')) {
+        //            $("#menu_button1").css('background', 'url("Images/menu-btn-clicked.png")  no-repeat');
+        //        }
+        //        else {
+        //            $("#menu_button1").css('background', 'url("Images/menuButton.png")');
+        //        }
+        //    });
+
+        //}
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            document.getElementById("lblEmail").innerHTML = Email;
+            document.getElementById("lblUsername").innerHTML = username;
+            $("#lnkChangePassword").click(function () {
+              //  alert("yes");
+                //ChangePassword(Id, Email, username);
+                window.location = "Changepassword.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+
+               }
+            );
+
+            $("#lnkChangeEmail").click(function () {
+               // alert("changeemail");
+                window.location = "ChangeEmail.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+              }
+            );
+            $("#lnkChangeUsername").click(function () {
+               // alert("changeusername");
+                window.location = "ChangeUserName.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+            }
+         );
+         //   $("#myReports").click(function () {
+         //       alert("reportssssss");
+         //       alert(Id);
+         //       window.location = "Home.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+         //   }
+         //);
+            
+
+        }
+        );
+        function UpdateChanges() {
+            var id = getUrlVars()["id"];
+         //   alert("yes");
+            $.ajax({
+
+                type: "POST",
+                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                // url: "WebService.asmx/UpdatePhAndAddressChanges",
+                url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
+                //data: "{'id': '" + Id + "'}",
+                data: "{'Id':'" + id + "','PhoneNo':'" + document.getElementById("txtPhone").value + "','Address':'" + document.getElementById("txtAddress").value + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    document.getElementById("txtPhone").value = "";
+                    document.getElementById("txtAddress").value = "";
+                    window.location = "Account.html?id=" + Id + "&username=" + ChangedUsername + "&Email=" + Email + "";
+                   
+                },
+                error: function (e) {
+                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                }
+
+            });
+        }
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+    </script>
+</head>
+
+<body style="padding: 0px; margin: 0px">
+    <!--<div class="header">
+        <div class="header_container">
+            <div class="menu_button" id="menu_button1" onclick="showDialog()">
+
+            </div>
+            <div class="header_right">
+                <div class="logo">
+
+                </div>
+                <div class="my_reports_text">
+                    <p>My Reports</p>
+                </div>
+            </div>
+            <div id="sub_menu_top">
+                <ul>
+                    <li><a href="" id="myReports" style="text-decoration:none;">MY REPORTS</a></li>
+                    <li><a href="#" style="text-decoration:none;">ACCOUNT</a></li>
+                    <li><a href="#" style="text-decoration:none;">LOG</a></li>
+                    <li><a href="#" style="text-decoration:none;">MEDIA LIBRARY</a></li>
+                    <li><a href="#" style="text-decoration:none;">LOGOUT</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>-->
+
+    <div class="wrap PageHeight">
+        <div class="PageHeadingTitle">Account Settings</div>
+        <div class="GeneralSettingsDiv">
+            <div class="BlockHeadingTitle">General Settings</div>
+            <div class="LeftContentDiv">Password:</div>
+            <div class="RightContentDiv">
+                <!--<asp:Label ID="lblPassword" runat="server" Text="●●●●●●"></asp:Label>-->
+                <label id="lblpassword">******</label> &nbsp;&nbsp;
+                <a id="lnkChangePassword" style="color: #007FFF; font-weight: bold;">Change</a>
+            </div>
+            <div class="clear"></div>
+            <div class="LeftContentDiv">Email:</div>
+            <div class="RightContentDiv">
+                <!--<asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>-->
+               <label id="lblEmail"></label> &nbsp;&nbsp;
+                <a id="lnkChangeEmail" style="color: #007FFF; font-weight: bold;">Change</a>
+            </div>
+            <div class="clear"></div>
+            <div class="LeftContentDiv">Username:</div>
+            <div class="RightContentDiv">
+                <!--<asp:Label ID="lblUsername" runat="server" Text=""></asp:Label>-->
+                <label id="lblUsername"></label>&nbsp;&nbsp;
+                <a id="lnkChangeUsername" style="color: #007FFF; font-weight: bold;">Change</a>
+            </div>
+            <div class="clear"></div>
+            <!--<div class="LeftContentDiv">Security Question:</div>
+            <div class="RightContentDiv">
+                <asp:Label ID="lblSecurityQuestion" runat="server" Text="●●●●●●"></asp:Label>
+                <label id="lblSecurityQuestion">******</label> &nbsp;&nbsp;
+                <a id="lnkChangeSecurityQuestion" style="color: #007FFF; font-weight: bold;">Change</a>
+            </div>-->
+            <div class="clear"></div>
+            <div class="LeftContentDiv">Phone:</div>
+            <div class="RightContentDiv">
+                <!--<asp:TextBox ID="txtPhone" runat="server" CssClass="TextBoxMedium"></asp:TextBox>-->
+                <input id="txtPhone" type="text" class="TextBoxMedium" />
+            </div>
+            <div class="clear"></div>
+            <div class="LeftContentDiv">Address:</div>
+            <div class="RightContentDiv">
+                <!--<asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" CssClass="TextAreaMedium"></asp:TextBox>-->
+                <input id="txtAddress" type="text" class="TextAreaMedium" />
+            </div>
+            <div class="clear"></div>
+            <div class="boxSaveButtonMid">
+                <!--<asp:ImageButton ID="ibtnUpdateChanges" runat="server" ImageUrl="~/images/saveBtn.png" OnClick="ibtnUpdateChanges_Click" />-->
+                <!--<input id="btnUpdateChanges" type="button" value="Save" onclick="UpdateChanges();" />-->
+                <button id="btnUpdateChanges" type="submit"><img src="Images/saveBtn.png"  onclick="UpdateChanges();"/></button>
+            </div>
+           
+           
+            <div class="clear"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+ 
+</body>
+</html>

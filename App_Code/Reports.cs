@@ -172,4 +172,23 @@ public class Reports
         }
         return Status;
     }
+    public static DataTable GetReportsPageHTML(int UserId, int ReportId)
+    {
+        DataTable dtReports = new DataTable();
+        try
+        {
+            SqlParameter[] myParams = SqlHelperParameterCache.GetSpParameterSet(BVisionConfigurationManager.GetConnectionString(), "sp_Reports");
+            myParams[0].Value = 7;
+            myParams[1].Value = ReportId;
+            myParams[2].Value = UserId;
+            myParams[9].Value = "";
+            dtReports = SqlHelper.ExecuteDataset(BVisionConfigurationManager.GetConnectionString(), CommandType.StoredProcedure, "sp_Reports", myParams).Tables[0];
+
+            return dtReports;
+        }
+        catch (Exception ex)
+        {
+            return dtReports;
+        }
+    }
 }

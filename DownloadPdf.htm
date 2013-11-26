@@ -8,37 +8,51 @@
     <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            //var userId = getUrlVars()["id"];
-            //var userName = getUrlVars()["username"];
-            //var reportName = getUrlVars()["reportName"];
+            //var online = navigator.onLine;    // Detecting the internet connection
+            ////alert(online);
+            //if (online) {
+            //    // do your stuff
+            //} else {
+            //    alert('You\'re Offline now...');
+            //    return false;
+            //}
+            var userId = getUrlVars()["id"];
+            var userName = getUrlVars()["username"];
+            var ReportID = getUrlVars()["ReportID"];
             var reportGuid = getUrlVars()["reportGuid"];
             var versionGuid = getUrlVars()["versionGuid"];
             var pageGuid = getUrlVars()["pageGuid"];
-            alert("yahoo...");
+            //alert("yahoo...");
+            alert(userName);
             $.ajax({
                
                 type: "POST",
                 //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                url: "WebService.asmx/DownloadPDF",
+                url: "http://rnws1.2bvision.com/WebService.asmx/DownloadPDF",
+              //  url: "WebService.asmx/DownloadPDF",
                 //data: "{'id': '" + Id + "'}",
-                data: "{'reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','pageGuid':'" + pageGuid +"'}",
+                data: "{'reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','pageGuid':'" + pageGuid + "','ReportID':'" + ReportID + "','userId':'" + userId + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    if (response != null && response != "")
+                    if (response.d != null && response.d != "")
                     {
-                        var PageHtml = response.d;
+                        var PageHTML = response.d;
+                        document.getElementById("HiddenHtml").innerHTML = PageHTML;
                         var Values = reportGuid + "~" + versionGuid + "~" + pageGuid;
-                        GeneratePDF(Values, PageHtml);
+                        GeneratePDF(Values);
                         alert("Report Download");
+                        window.location = "Home.html?id=" + userId + "&username=" + username + "";
                     }
                     
                    // window.location = "home.htm?id=" + $.Storage.get("id") + "&username=" + $.Storage.get("username") + "";
 
-                    /*else {
-                    alert("No data to display");
-                    alert(response.d);
-                    }*/
+                    else {
+                        alert("Please Create A report First.");
+                        alert(userId);
+                        window.location = "Home.html?id=" + userId + "&username=" + username + "";
+                    //alert(response.d);
+                    }
                 },
                 error: function (e) {
                     $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
@@ -60,8 +74,8 @@
             }
             return vars;
         }
-        function GeneratePDF(Values, PageHtml) {
-            alert("befor download");
+        function GeneratePDF(Values) {
+            //alert("befor download");
             var SplitValues = Values.split('~');
             var Requesti = SplitValues[0];
             var Requestv = SplitValues[1];
@@ -76,10 +90,9 @@
             var N3GUID = "";
             var FinalArray = [];
             var FinalArrayGUID = [];
-            var OLN1 = PageHtml;
-            //var OLN1 = $("#ContentPlaceHolder1_HiddenPagesHTML");
+            var OLN1 = $("#HiddenHtml");
+            //var OLN1 = document.getElementById("HiddenHtml");
             var OLN1Children = OLN1.children('li');
-
             OLN1Children.each(function () {
                 N1 = $(this).attr("id");
                 N1GUID = $("#" + N1 + '_G').val();
@@ -139,30 +152,60 @@
             }
             var AllPageIds = ConcateArray.slice(0, -1);
             var AllPageGUIDs = ConcateArrayGUID.slice(0, -1);
-
-            //ajaxSaveBookmarkRecord(AllPageIds, AllPageGUIDs, Requesti, Requestv, Requestp, Requestr);
+            // alert(AllPageIds);
+            // alert(AllPageGUIDs);
+            // alert(Requesti);
+            // alert(Requestv);
+            // alert(Requestp);
+          //  alert(Requestr);
+            ajaxSaveBookmarkRecord(AllPageIds, AllPageGUIDs, Requesti, Requestv, Requestp, Requestr);
             return false;
         }
         //Save bookmarks methods
         function ajaxSaveBookmarkRecord(PageIds, PageGUIDs, ReportGUID, VersionGUID, PageGUID, EmailLogGUID) {
+           // alert("Save BookMark");
             $.ajax({
                 type: "POST",
-                url: "WebServices/SaveReportHTML.asmx/SaveBookmarkRecord",
+                url: "http://rnws1.2bvision.com/SaveReportHTML.asmx/SaveBookmarkRecord",
+              //  url: "SaveReportHTML.asmx/SaveBookmarkRecord",
                 data: "{'PageIds':'" + PageIds + "','PageGUIDs':'" + PageGUIDs + "','ReportGUID': '" + ReportGUID + "','VersionGUID': '" + VersionGUID + "'}",
                 contentType: "application/json",
                 dataType: "json",
                 success: function (msg) {
                     if (msg.d != "Error") {
-                        window.location = 'DownloadPDF?g=' + msg.d + '&p=' + PageGUID + '&r=' + EmailLogGUID;
+                        //window.location = 'DownloadPDF?g=' + msg.d + '&p=' + PageGUID + '&r=' + EmailLogGUID;
+                        DownloadPDFFile(msg.d, PageGUID, EmailLogGUID);
+                       // window.location = 'http://www.reportninja.org/DownloadPDF?g=' + msg.d + '&p=' + PageGUID + '&r=' + EmailLogGUID;
                     }
                 }
             });
         }
-
-
+        function DownloadPDFFile(GUID, PageGUID, EmailLogGUID)
+        {
+            alert("DownloadPDFFile");
+            alert(GUID);
+            alert(PageGUID);
+            alert(EmailLogGUID);
+            $.ajax({
+                type: "POST",
+               // url: "WebService.asmx/GeneratePDPFile",
+                url: "http://rnws1.2bvision.com/WebService.asmx/GeneratePDPFile",
+                data: "{'GUID':'" + GUID + "','pageGUID':'" + PageGUID + "','EmailLogGUID': '" + EmailLogGUID + "'}",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d != "Error") {
+                        window.location = 'Download.ashx?FileName=' + msg.d ;
+                     
+                    }
+                }
+            });
+        }
+       
     </script>
 
 </head>
 <body>
+    <div id="HiddenHtml" style="display:none;" />
 </body>
 </html>

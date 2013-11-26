@@ -191,27 +191,27 @@
         var flag = "true";
         // alert("Doc dot ready");
         $(document).ready(function () {
-            var online = navigator.onLine;    // Detecting the internet connection
-            //alert(online);
-            if (online) {
-                // do your stuff
-            } else {
-                alert('You\'re Offline now...');
-                return false;
-            }
+            //var online = navigator.onLine;    // Detecting the internet connection
+            ////alert(online);
+            //if (online) {
+            //    // do your stuff
+            //} else {
+            //    alert('You\'re Offline now...');
+            //    return false;
+            //}
+          
             setTimeout(function () {
                 // alert("before");
                 funreports();
                 //alert("after")
             }, 1500);
-            //$("#sub_menu_top").hide();
+           // $("#sub_menu_top").hide();
 
             return false;
-            //alert("1");
             $("#myReports").click(function () {
-                
+               // alert("1");
                 setTimeout(function () {
-                  // alert("before");
+                   // alert("before");
                     funreports();
                     //alert("after")
                 }, 1500);
@@ -222,6 +222,8 @@
             }
 
        );
+           
+            
             $('myDialog').dialog({
                 modal: true
         });
@@ -306,7 +308,7 @@
         //}, 2000);
 
         function funreports() {
-            //alert("Yes called");
+           // alert("Yes called");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             //$.Storage.set("id", Id);
@@ -314,7 +316,7 @@
             if (flag == "true") {
                 $.ajax({
                     type: "POST",
-                   url:"http://rnws.2bvision.com/WebService.asmx/LoadReports",
+                   url:"http://rnws1.2bvision.com/WebService.asmx/LoadReports",
                    // url: "WebService.asmx/LoadReports",
                     data: "{'id': '" + Id + "'}",
                     contentType: "application/json; charset=utf-8",
@@ -322,26 +324,34 @@
                     success: function (response) {
                        // alert("success1");
                         if (response.d != null && response.d != "") {
-                           // alert("success");
-                            //flag = "false";
+                         // alert("success");
+                            flag = "false";
                             
                             var prods = response.d;
-                           // alert("Responce:" + prods);
-                            var myarray = prods.split(';');
-                           // alert("abc:" + myarray[0]);
+                           // alert("Responce:" +prods);
+                            var myarray = prods.split('$');
                             for (var i = 0; i < myarray.length - 1; i++)
                             {
-                               
-                                var array = myarray[i].split(",");
-                                //alert(array[6]);
+                                var array = myarray[i].split("~");
+                                //var reportGuid = array[1];
+                                //document.getElementById("reportGuid").value = reportGuid;
+                                //alert(array[2]);
+                                //var versionGuid = array[2];
+                                //document.getElementById("versionGuid").value = versionGuid;
+                                //var pageGuid = array[3];
+                                //document.getElementById("pageGuid").value = pageGuid;
+                                //               alert("array of 6"+array[6]);
+                                //alert("Html:" +array[7])
                                 if (array[6] == "True")
                                 {
-                                    $("#accordion").append("<div class='accordion_head'> " + "<p class='heading3'>" + array[0] + "</p>" + "<div class='button_drop'>" + "</div>" + "</div>" + "<div>" + "<div class='sub_menu'> " + "<ul>" + "<li>" + "<div class='viewDiv' onclick=location.href='http://www.reportninja.org/MobileViewer?i=" + array[1] + "&v=" + array[2] + "&p=" + array[3] + "';>" + "<p class='buttonDiv' >" + "View" + "</p>" + "</div>" + "</li>" + "<li>" + " <a class='buttonDiv' href='DownloadPdf.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Generate" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='sendReport.htm?id=" + Id + "&username=" + username + "&reportName=" + array[0] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Send" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='LockReport.htm?statusReport=" + array[6] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Locked" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DeleteReport.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "'>" + "Delete" + "</a>" + "</li>" + "</ul>" + "</div>" + "</div>");
+                                   // $.Storage.set(array[0], array[7]);
+                                    $("#accordion").append("<div class='accordion_head'> " + "<p class='heading3'>" + array[0] + "</p>" + "<div class='button_drop'>" + "</div>" + "</div>" + "<div>" + "<div class='sub_menu'> " + "<ul>" + "<li>" + "<div class='viewDiv' onclick=location.href='http://www.reportninja.org/MobileViewer?i=" + array[1] + "&v=" + array[2] + "&p=" + array[3] + "';>" + "<p class='buttonDiv' >" + "View" + "</p>" + "</div>" + "</li>" + "<li>" + " <a class='buttonDiv' href='DownloadPdf.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "&ReportID=" + array[7] + "&id=" + Id + "&username=" + username + "'>" + "Generate" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='sendReport.htm?id=" + Id + "&username=" + username + "&reportName=" + array[0] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Send" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='LockReport.htm?statusReport=" + array[6] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Locked" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DeleteReport.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "'>" + "Delete" + "</a>" + "</li>" + "</ul>" + "</div>" + "</div>");
                                 }
                                 else
                                 {
-                                  // alert("else");
-                                    $("#accordion").append("<div class='accordion_head'> " + "<p class='heading3'>" + array[0] + "</p>" + "<div class='button_drop'>" + "</div>" + "</div>" + "<div>" + "<div class='sub_menu'> " + "<ul>" + "<li>" + "<a class='buttonDiv pop' id='" + array[0] + "," + array[4] + "," + array[5] + "' href='EditReport.htm?ReportName=" + array[0] + "&reportPassword=" + array[4] + "&reportId=" + array[5] + "&Id=" + Id + "&username=" + username + "'>" + "Edit" + "</a>" + "</li>" + "<li>" + "<div class='viewDiv' onclick=location.href='http://www.reportninja.org/MobileViewer?i=" + array[1] + "&v=" + array[2] + "&p=" + array[3] + "';>" + "<p class='buttonDiv' >" + "View" + "</p>" + "</div>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DownloadPdf.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Generate" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='sendReport.htm?id=" + Id + "&username=" + username + "&reportName=" + array[0] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Send" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='LockReport.htm?statusReport=" + array[6] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "&Id=" + Id + "&username=" + username + "'>" + "Lock" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DeleteReport.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&Id=" + Id + "&username=" + username + "'>" + "Delete" + "</a>" + "</li>" + "</ul>" + "</div>" + "</div>");
+                                    //$.Storage.set(array[0], array[7]);
+                                    //alert("else");
+                                    $("#accordion").append("<div class='accordion_head'> " + "<p class='heading3'>" + array[0] + "</p>" + "<div class='button_drop'>" + "</div>" + "</div>" + "<div>" + "<div class='sub_menu'> " + "<ul>" + "<li>" + "<a class='buttonDiv pop' id='" + array[0] + "," + array[4] + "," + array[5] + "' href='EditReport.htm?ReportName=" + array[0] + "&reportPassword=" + array[4] + "&reportId=" + array[5] + "&Id=" + Id + "&username=" + username + "'>" + "Edit" + "</a>" + "</li>" + "<li>" + "<div class='viewDiv' onclick=location.href='http://www.reportninja.org/MobileViewer?i=" + array[1] + "&v=" + array[2] + "&p=" + array[3] + "';>" + "<p class='buttonDiv' >" + "View" + "</p>" + "</div>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DownloadPdf.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "&ReportID=" + array[7] + "&id=" + Id+ "&username=" + username+"'>" + "Generate" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='sendReport.htm?id=" + Id + "&username=" + username + "&reportName=" + array[0] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "'>" + "Send" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='LockReport.htm?statusReport=" + array[6] + "&reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&pageGuid=" + array[3] + "&Id=" + Id + "&username=" + username + "'>" + "Lock" + "</a>" + "</li>" + "<li>" + "<a class='buttonDiv' href='DeleteReport.htm?reportGuid=" + array[1] + "&versionGuid=" + array[2] + "&Id=" + Id + "&username=" + username + "'>" + "Delete" + "</a>" + "</li>" + "</ul>" + "</div>" + "</div>");
                                 }
                                 //$("#divReports").append(array[0] + "<a class='pop' href='#'>" + "Send" + "</a>" + "<br/>");
                             }
@@ -360,13 +370,56 @@
                         }
                     },
                     error: function (e) {
-                        alert("error");
                         $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
                     }
 
                 });
             }
         }
+        function MyAccount() {
+            
+                alert("Account");
+                var Id = getUrlVars()["id"];
+                var username = getUrlVars()["username"];
+                var Email = getUrlVars()["Email"];
+                window.location = "Account.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+           
+        }
+        function Generate(reportguid) {
+            alert("yes");
+            alert(reportguid);
+            $.ajax({
+
+                type: "POST",
+                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                url: "WebService.asmx/DownloadPDF",
+                //data: "{'id': '" + Id + "'}",
+                data: "{'reportGuid':'" + document.getElementById("reportGuid").value + "','versionGuid':'" + document.getElementById("versionGuid") + "','pageGuid':'" + document.getElementById("pageGuid") + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response != null && response != "") {
+                        var PageHtml = response.d;
+                        document.getElementById('HiddenHtml').value = PageHtml;
+                        var Values = reportGuid + "~" + versionGuid + "~" + pageGuid;
+                        GeneratePDF(Values);
+                        alert("Report Download");
+                    }
+
+                    // window.location = "home.htm?id=" + $.Storage.get("id") + "&username=" + $.Storage.get("username") + "";
+
+                    /*else {
+                    alert("No data to display");
+                    alert(response.d);
+                    }*/
+                },
+                error: function (e) {
+                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                }
+
+            });
+        }
+     
 
        
 
@@ -505,7 +558,7 @@
             <div id="sub_menu_top">
                 <ul>
                     <li><a href="" id="myReports" style="text-decoration:none;">MY REPORTS</a></li>
-                    <li><a href="#" style="text-decoration:none;">ACCOUNT</a></li>
+                    <li><a href=""  id="Account"style="text-decoration:none;" onclick="MyAcount();">ACCOUNT</a></li>
                     <li><a href="#" style="text-decoration:none;">LOG</a></li>
                     <li><a href="#" style="text-decoration:none;">MEDIA LIBRARY</a></li>
                     <li><a href="#" style="text-decoration:none;">LOGOUT</a></li>
@@ -528,7 +581,9 @@
   
 
 
-    
+    <input type="hidden" id="reportGuid" value=""  />
+    <input type="hidden" id="versionGuid" value="" />
+    <input type="hidden" id="pageGuid" value="" />
                   
 </body>
 

@@ -50,7 +50,14 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-
+            var online = navigator.onLine;    // Detecting the internet connection
+            //alert(online);
+            if (online) {
+                // do your stuff
+            } else {
+                alert('You\'re Offline now...');
+                return false;
+            }
            
             var userId = getUrlVars()["id"];
             var userName = getUrlVars()["username"];
@@ -65,7 +72,7 @@
                 $.ajax({
                     type: "POST",
                     url: "http://rnws1.2bvision.com/WebService.asmx/SendEmailReport",
-                    //url: "WebService.asmx/SendEmailReport",
+                   // url: "WebService.asmx/SendEmailReport",
                     //data: "{'id': '" + Id + "'}",
                     data: "{'username': '" + userName + "','userId':'" + userId + "','reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','reportName':'" + reportName + "','topPageGuid':'" + pageGuid + "','Emails':'" + Emails + "'}",
                     contentType: "application/json; charset=utf-8",

@@ -8,6 +8,14 @@
     <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            var online = navigator.onLine;    // Detecting the internet connection
+            //alert(online);
+            if (online) {
+                // do your stuff
+            } else {
+                alert('You\'re Offline now...');
+                return false;
+            }
             alert("lockreport");
             var userId = getUrlVars()["Id"];
             var userName = getUrlVars()["username"];
@@ -30,7 +38,7 @@
                     //alert("Report Deleted");
                     if (response != null && response != "") {
                         var status = response.d;
-                       // alert("<html><body><a href=''>click here</a></body></html>");
+                        alert("<html><body><a href=''>click here</a></body></html>");
                         //alert(status+"<a href='index.html'>+'"click here'"+</a>+'" to create a new version of this report.");
                     }
                     window.location = "home.htm?id=" + Id + "&username=" + username + "";
