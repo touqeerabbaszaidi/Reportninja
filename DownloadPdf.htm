@@ -166,7 +166,7 @@
            // alert("Save BookMark");
             $.ajax({
                 type: "POST",
-                url: "http://www.mobile.reportninja.org/webservice.asmx/SaveBookmarkRecord",
+                url: "http://www.mobile.reportninja.org/SaveReportHTML.asmx/SaveBookmarkRecord",
               //  url: "SaveReportHTML.asmx/SaveBookmarkRecord",
                 data: "{'PageIds':'" + PageIds + "','PageGUIDs':'" + PageGUIDs + "','ReportGUID': '" + ReportGUID + "','VersionGUID': '" + VersionGUID + "'}",
                 contentType: "application/json",
