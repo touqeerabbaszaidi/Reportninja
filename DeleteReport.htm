@@ -16,8 +16,8 @@
             var pageGuid = getUrlVars()["pageGuid"];
             $.ajax({
                 type: "POST",
-                url:"http://rnws1.2bvision.com/WebService.asmx/deleteReport",
-                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                //url:"http://rnws1.2bvision.com/WebService.asmx/deleteReport",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/deleteReport",
                 //url: "WebService.asmx/deleteReport",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "'}",

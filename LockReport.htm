@@ -28,7 +28,7 @@
             var username = getUrlVars()["username"];
             $.ajax({
                 type: "POST",
-                url: "http://rnws1.2bvision.com/WebService.asmx/lockReport",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/lockReport",
                 //url: "WebService.asmx/lockReport",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'statusLocked':'" + status + "','reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','pageGuid':'" + pageGuid + "'}",

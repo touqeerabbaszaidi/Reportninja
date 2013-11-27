@@ -218,9 +218,9 @@
             $.ajax({
 
                 type: "POST",
-                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/UpdatePhAndAddressChanges",
                 // url: "WebService.asmx/UpdatePhAndAddressChanges",
-                url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
+                //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'Id':'" + id + "','PhoneNo':'" + document.getElementById("txtPhone").value + "','Address':'" + document.getElementById("txtAddress").value + "'}",
                 contentType: "application/json; charset=utf-8",

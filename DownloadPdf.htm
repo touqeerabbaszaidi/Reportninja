@@ -27,8 +27,8 @@
             $.ajax({
                
                 type: "POST",
-                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                url: "http://rnws1.2bvision.com/WebService.asmx/DownloadPDF",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/DownloadPDF",
+                //url: "http://rnws1.2bvision.com/WebService.asmx/DownloadPDF",
               //  url: "WebService.asmx/DownloadPDF",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','pageGuid':'" + pageGuid + "','ReportID':'" + ReportID + "','userId':'" + userId + "'}",
@@ -166,7 +166,7 @@
            // alert("Save BookMark");
             $.ajax({
                 type: "POST",
-                url: "http://rnws1.2bvision.com/SaveReportHTML.asmx/SaveBookmarkRecord",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/SaveBookmarkRecord",
               //  url: "SaveReportHTML.asmx/SaveBookmarkRecord",
                 data: "{'PageIds':'" + PageIds + "','PageGUIDs':'" + PageGUIDs + "','ReportGUID': '" + ReportGUID + "','VersionGUID': '" + VersionGUID + "'}",
                 contentType: "application/json",
@@ -189,7 +189,7 @@
             $.ajax({
                 type: "POST",
                // url: "WebService.asmx/GeneratePDPFile",
-                url: "http://rnws1.2bvision.com/WebService.asmx/GeneratePDPFile",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/GeneratePDPFile",
                 data: "{'GUID':'" + GUID + "','pageGUID':'" + PageGUID + "','EmailLogGUID': '" + EmailLogGUID + "'}",
                 contentType: "application/json",
                 dataType: "json",
