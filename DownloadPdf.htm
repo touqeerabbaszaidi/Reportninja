@@ -23,13 +23,13 @@
             var versionGuid = getUrlVars()["versionGuid"];
             var pageGuid = getUrlVars()["pageGuid"];
             //alert("yahoo...");
-            alert(userName);
+            //alert(userName);
             $.ajax({
                
                 type: "POST",
                 url: "http://www.mobile.reportninja.org/webservice.asmx/DownloadPDF",
-                //url: "http://rnws1.2bvision.com/WebService.asmx/DownloadPDF",
-              //  url: "WebService.asmx/DownloadPDF",
+               // url: "http://rnws1.2bvision.com/WebService.asmx/DownloadPDF",
+               // url: "WebService.asmx/DownloadPDF",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','pageGuid':'" + pageGuid + "','ReportID':'" + ReportID + "','userId':'" + userId + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -41,7 +41,7 @@
                         document.getElementById("HiddenHtml").innerHTML = PageHTML;
                         var Values = reportGuid + "~" + versionGuid + "~" + pageGuid;
                         GeneratePDF(Values);
-                        alert("Report Download");
+                       // alert("Report Download");
                         window.location = "Home.html?id=" + userId + "&username=" + username + "";
                     }
                     
@@ -167,7 +167,7 @@
             $.ajax({
                 type: "POST",
                 url: "http://www.mobile.reportninja.org/SaveReportHTML.asmx/SaveBookmarkRecord",
-              //  url: "SaveReportHTML.asmx/SaveBookmarkRecord",
+                //url: "SaveReportHTML.asmx/SaveBookmarkRecord",
                 data: "{'PageIds':'" + PageIds + "','PageGUIDs':'" + PageGUIDs + "','ReportGUID': '" + ReportGUID + "','VersionGUID': '" + VersionGUID + "'}",
                 contentType: "application/json",
                 dataType: "json",
@@ -182,14 +182,14 @@
         }
         function DownloadPDFFile(GUID, PageGUID, EmailLogGUID)
         {
-            alert("DownloadPDFFile");
-            alert(GUID);
-            alert(PageGUID);
-            alert(EmailLogGUID);
+           // alert("DownloadPDFFile");
+           // alert(GUID);
+            //alert(PageGUID);
+            //alert(EmailLogGUID);
             $.ajax({
                 type: "POST",
-               // url: "WebService.asmx/GeneratePDPFile",
-                url: "http://www.mobile.reportninja.org/webservice.asmx/GeneratePDPFile",
+                //url: "WebService.asmx/GeneratePDPFile",
+                 url: "http://www.mobile.reportninja.org/webservice.asmx/GeneratePDPFile",
                 data: "{'GUID':'" + GUID + "','pageGUID':'" + PageGUID + "','EmailLogGUID': '" + EmailLogGUID + "'}",
                 contentType: "application/json",
                 dataType: "json",

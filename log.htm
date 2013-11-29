@@ -3,29 +3,342 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <link href="Styles/style111.css" rel="stylesheet" />
      <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.Storage.js"></script>
     <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var reportId = getUrlVars()["reportId"];
-            var reportName = getUrlVars()["reportName"];
-            var reportPassword = getUrlVars()["reportPassword"];
-            var versionGuid = getUrlVars()["versionGuid"];
-            var pageGuid = getUrlVars()["pageGuid"];
+            //var reportId = getUrlVars()["reportId"];
+            //var reportName = getUrlVars()["reportName"];
+            //var reportPassword = getUrlVars()["reportPassword"];
+            var UserId = getUrlVars()["id"];
+            //var pageGuid = getUrlVars()["pageGuid"];
+           // alert(UserId);
+
             $.ajax({
                 type: "POST",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/logReport",
                 //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                url: "WebService.asmx/EditReport",
+                url: "WebService.asmx/logReport",
                 //data: "{'id': '" + Id + "'}",
-                data: "{'reportId':'" + reportId + "','reportName':'" + reportName + "','reportPassword':'" + reportPassword + "'}",
+                data: "{'UserId':'" + UserId + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("in load reports");
+                   // alert("success");
                     if (response != null && response != "") {
                         var prods = response.d;
-                        alert(prods);
+                       // alert(prods);
+                        var myArray = prods.split(';');
+                       // alert("Length" +myArray.length);
+                        for (var i=0; i<myArray.length-1; i++)
+                        {
+                            var Array = myArray[i].split('$');
+
+                            if (Array[0]!="")
+                            {
+                                // Reports
+                                if (Array[0] =="Report Created")
+                                {
+                                    //alert("1");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The Report <b Style="color:#0066CC">' + Array[1] + '</b> Has been Created</td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] =="Report Updated")
+                                {
+                                    //alert("2");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The Report <b Style="color:#0066CC">' + Array[1] + '</b> Has been Updated</td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                // Version
+                                if (Array[0] =="Report Version Locked")
+                                {
+                                    //alert("3");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The Report <b Style="color:#0066CC">' + Array[1] + '</b> Has been Locked</td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Report Version Created")
+                                {
+                                    //alert("4");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A new version of <b Style="color:#0066CC">' + Array[1] + '</b> Has been Created</td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Report Version Deleted")
+                                {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The Report <b Style="color:#0066CC">' + Array[1] + '</b> Has been Deleted</td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                // Page
+                                if (Array[0] == "Page Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Page <b Style="color:#0066CC">' + Array[2] + '</b> Has been Created on Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Page Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Page <b Style="color:#0066CC">' + Array[2] + '</b> Has been Updated of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Page Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Page <b Style="color:#0066CC">' + Array[2] + '</b> Has been Deleted of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                // PDF Generate
+                                if (Array[0] == "PDF Generated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> You Have Generated PDF of Report <b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                // Report Sent
+                                if (Array[0] == "Report Sent") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> You Have Sent the Report <b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                // Paragraph
+                                if (Array[0] == "Paragraph Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Paragraph has been added on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Paragraph Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Paragraph has been updated on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Paragraph Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Paragraph has been deleted on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at ' + Array[5] + '</td></tr>');
+                                }
+                                //Image
+                                if (Array[0] == "Image Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An Image has been added on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Image Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An Image has been updated on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Image Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An Image has been deleted on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                // Image with paragraph
+                                if (Array[0] == "ImageWithParagraph Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An image with Paragraph has been added on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "ImageWithParagraph Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An image with Paragraph has been updated on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "ImageWithParagraph Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An image with Paragraph has been deleted on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                // Multiple Image With Paragraph
+                                if (Array[0] == "MultipleImageParagraph Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The multiple images with Paragraph has been added on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "MultipleImageParagraph Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The multiple images with Paragraph has been updated on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "MultipleImageParagraph Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The multiple images with Paragraph has been deleted on  page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Section Break
+                                if (Array[0] == "SectionBreak Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A section Break has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "SectionBreak Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A section Break has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "SectionBreak Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A section Break has been deleted on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Line
+                                if (Array[0] == "Line Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A line has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Line Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A line has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Line Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A line has been deleted on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                // Text Box
+                                if (Array[0] == "Textbox Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A textbox has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Textbox Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A textbox has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Textbox Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A textbox has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //TextArea
+                                if (Array[0] == "TextArea Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A textarea has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "TextArea Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A textarea has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "TextArea Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A textarea has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Button
+                                if (Array[0] == "Button Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A button has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Button Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A button has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Button Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A button has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //HyperLink
+                                if (Array[0] == "Hyperlink Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A hyperlink has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Hyperlink Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A hyperlink has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Hyperlink Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A hyperlink has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                // Audio
+                                if (Array[0] == "Audio Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An Audio file has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Audio Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An Audio file has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Audio Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> An Audio file has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Video
+                                if (Array[0] == "Video Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A video file has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Video Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A video file has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Video Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A video file has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Radio
+                                if (Array[0] == "Radio Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A rideo button has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Radio Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A rideo button has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Radio Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A rideo button has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Checkbox
+                                if (Array[0] == "Checkbox Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A checkbox has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Checkbox Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A checkbox has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Checkbox Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A checkbox has been deleted on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Space
+                                if (Array[0] == "Space Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A space has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Space Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A space has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Space Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A space has been deleted on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //Word
+                                if (Array[0] == "Word Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft word document has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Word Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft word document has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Word Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft word document has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+
+                                // Excel
+                                if (Array[0] == "Excel Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft excel document has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Excel Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft excel document has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "Excel Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft excel document has been deleted on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                // PowerPoint
+                                if (Array[0] == "PowerPoint Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft powerpoint document has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "PowerPoint Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft powerpoint document has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "PowerPoint Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> A Microsoft powerpoint document has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                //PDF
+                                if (Array[0] == "PDF Created") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The PDF document has been added on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "PDF Updated") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The PDF document has been updated on page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                                if (Array[0] == "PDF Deleted") {
+                                    //alert("5");
+                                    $("#LogActivity").append('<tr><td Style="border-bottom: solid 1px #B4B5B0"> The PDF document has been deleted from page <b Style="color:#0066CC">' + Array[2] + '</b> of Report<b Style="color:#0066CC">' + Array[1] + '</b></td><td Style="border-bottom: solid 1px #B4B5B0">' + Array[4] + 'at' + Array[5] + '</td></tr>');
+                                }
+                            }
+                            //$("#LogActivity").append('<tr><td>' + Array[0] + '</td></tr>');
+                        }
                     }
                     else {
                         alert("No data to display");
@@ -53,8 +366,17 @@
 
 
     </script>
+    <style>
+        #LogActivity tr {
+            border: solid 1px #000000;
+        }
+
+    </style>
 </head>
 <body>
-
+    <h3 style="color: #0066CC; font-size:18px">Activity Log</h3>
+    <div class="GeneralSettingsDiv">
+        <table id="LogActivity"></table>
+    </div>
 </body>
 </html>

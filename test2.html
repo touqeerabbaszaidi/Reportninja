@@ -98,12 +98,18 @@
             //alert("2");
         }
         function MyAcount() {
-            alert("MyAcount");
+            //alert("MyAcount");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             var Email = getUrlVars()["Email"];
             window.location = "Account.html?id=" + Id + "&username=" + username + "&Email="+ Email +"";
 
+        }
+        function LogReports()
+        {
+           // alert("logReports");
+            var Id = getUrlVars()["id"];
+            window.location = "log.htm?id=" + Id + "";
         }
 
         function getUrlVars() {
@@ -139,7 +145,7 @@
                 </div>
             </div>
             <div class="home_button">
-                <div class="button" id="Div2" >
+                <div class="button" id="Div2" onclick="LogReports();" >
                     <p>LOG</p>
                     </div>
                 <div class="arrow">
