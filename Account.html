@@ -20,7 +20,7 @@
         }
 
             .ui-accordion-header.ui-state-active .button_drop {
-                background: url('Images/after-click.png');
+                background: url('images/after-click.png');
                 height: 20px;
                 width: 25px;
             }
@@ -84,7 +84,7 @@
 
         .logo {
             float: left;
-            background: url('Images/logo.png') no-repeat;
+            background: url('images/logo.png') no-repeat;
             height: 45px;
             width: 46px;
             margin-top: 0px;
@@ -106,7 +106,7 @@
 
         .header {
             height: 45px;
-            background: url('Images/header-bg.png') repeat-x;
+            background: url('images/header-bg.png') repeat-x;
             width: 100%;
         }
 
@@ -114,7 +114,7 @@
             float: left;
             width: 31px;
             height: 25px;
-            background: url('Images/menuButton.png');
+            background: url('images/menuButton.png');
             margin-left: 5px;
             margin-top: 9px;
         }
@@ -127,7 +127,7 @@
         }
 
         .button_drop {
-            background: url('Images/before-click.png') no-repeat;
+            background: url('images/before-click.png') no-repeat;
             height: 25px;
             width: 25px;
             float: right;
@@ -168,10 +168,10 @@
         //function showDialog() {
         //    $("#sub_menu_top").toggle("fast", function () {
         //        if ($("#sub_menu_top").is(':visible')) {
-        //            $("#menu_button1").css('background', 'url("Images/menu-btn-clicked.png")  no-repeat');
+        //            $("#menu_button1").css('background', 'url("images/menu-btn-clicked.png")  no-repeat');
         //        }
         //        else {
-        //            $("#menu_button1").css('background', 'url("Images/menuButton.png")');
+        //            $("#menu_button1").css('background', 'url("images/menuButton.png")');
         //        }
         //    });
 
@@ -220,7 +220,7 @@
                 type: "POST",
                 url: "http://www.mobile.reportninja.org/webservice.asmx/UpdatePhAndAddressChanges",
                 // url: "WebService.asmx/UpdatePhAndAddressChanges",
-                //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
+                url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'Id':'" + id + "','PhoneNo':'" + document.getElementById("txtPhone").value + "','Address':'" + document.getElementById("txtAddress").value + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -324,7 +324,7 @@
             <div class="boxSaveButtonMid">
                 <!--<asp:ImageButton ID="ibtnUpdateChanges" runat="server" ImageUrl="~/images/saveBtn.png" OnClick="ibtnUpdateChanges_Click" />-->
                 <!--<input id="btnUpdateChanges" type="button" value="Save" onclick="UpdateChanges();" />-->
-                <button id="btnUpdateChanges" type="submit"><img src="Images/saveBtn.png"  onclick="UpdateChanges();"/></button>
+                <button id="btnUpdateChanges" type="submit"><img src="images/saveBtn.png"  onclick="UpdateChanges();"/></button>
             </div>
            
            

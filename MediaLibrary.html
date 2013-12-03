@@ -26,7 +26,7 @@
 
                 type: "POST",
                 url: "http://www.mobile.reportninja.org/webservice.asmx/LoadMediaContents",
-                //url: "WebService.asmx/LoadMediaContents",
+               // url: "WebService.asmx/LoadMediaContents",
                 //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'userId':'"+ Id + "'}",
@@ -43,7 +43,8 @@
                         for(var i=0; i<MyArray.length - 1; i++)
                         {
                             var Array = MyArray[i].split("$");
-                            $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewMedia.html?FilePath=" + Array[6] + "' ><img src='Images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='Images/document_delete.png' width='20px'></a>" + '</td></tr>');
+                            alert(Array[0]);
+                            $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewMedia.html?FilePath=" + Array[6] + "' ><img src='images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='images/document_delete.png' width='20px'></a>" + '</td></tr>');
                         }
                     }
 
@@ -62,8 +63,8 @@
             $.ajax({
 
                 type: "POST",
-                url: "http://www.mobile.reportninja.org/webservice.asmx/DeleteMediaContents",
-                //url: "WebService.asmx/DeleteMediaContents",
+                //url: "http://www.mobile.reportninja.org/webservice.asmx/DeleteMediaContents",
+                url: "WebService.asmx/DeleteMediaContents",
                 //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'MediaContentId':'" + MediaId + "'}",

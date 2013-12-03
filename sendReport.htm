@@ -24,7 +24,7 @@
 
         .header {
             height: 45px;
-            background: url('Images/header-bg.png') repeat-x;
+            background: url('images/header-bg.png') repeat-x;
             width: 100%;
         }
 
@@ -40,7 +40,7 @@
 
         .logo {
             float: left;
-            background: url('Images/logo.png') no-repeat;
+            background: url('images/logo.png') no-repeat;
             height: 45px;
             width: 46px;
             margin-top: 0px;
@@ -71,7 +71,8 @@
                 var Emails = document.getElementById('txtEmailReportEmails').value
                 $.ajax({
                     type: "POST",
-                    url: "http://www.mobile.reportninja.org/webservice.asmx/SendEmailReport",
+                     url: "http://www.mobile.reportninja.org/webservice.asmx/SendEmailReport",
+                    //url: "http://rnws1.2bvision.com/WebService.asmx/SendEmailReport",
                    // url: "WebService.asmx/SendEmailReport",
                     //data: "{'id': '" + Id + "'}",
                     data: "{'username': '" + userName + "','userId':'" + userId + "','reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','reportName':'" + reportName + "','topPageGuid':'" + pageGuid + "','Emails':'" + Emails + "'}",
