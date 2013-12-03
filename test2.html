@@ -111,6 +111,11 @@
             var Id = getUrlVars()["id"];
             window.location = "log.htm?id=" + Id + "";
         }
+        function MediaLibrary() {
+
+            var Id = getUrlVars()["id"];
+            window.location = "MediaLibrary.html?id=" + Id + "";
+        }
 
         function getUrlVars() {
             var vars = [], hash;
@@ -153,7 +158,7 @@
                 </div>
             </div>
             <div class="home_button">
-                <div class="button" id="Div3" >
+                <div class="button" id="Div3" onclick="MediaLibrary();">
                     <p>MEDIA LIBRARY</p>
                     </div>
                 <div class="arrow">
