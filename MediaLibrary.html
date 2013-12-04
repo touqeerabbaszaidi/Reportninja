@@ -11,7 +11,7 @@
             fnMediaLibrary();
             document.getElementById("AddMediaContent").style.visibility = 'hidden';
             $("#btnAddFiles").click(function () {
-                alert("select");
+               // alert("select");
                 document.getElementById("btnAddFiles").style.visibility = 'hidden';
                 document.getElementById("AddMediaContent").style.visibility = 'visible';
             }
@@ -25,8 +25,8 @@
             $.ajax({
 
                 type: "POST",
-                url: "http://www.mobile.reportninja.org/webservice.asmx/LoadMediaContents",
-               // url: "WebService.asmx/LoadMediaContents",
+               url: "http://www.mobile.reportninja.org/webservice.asmx/LoadMediaContents",
+                //url: "WebService.asmx/LoadMediaContents",
                 //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'userId':'"+ Id + "'}",
@@ -45,10 +45,10 @@
                             var Array = MyArray[i].split("$");
                             if (Array[2] == "image")
                                 {
-                                     $("#tblContents").append('<tr><td>' + "<img src='../" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewImage.html?FilePath=" + Array[6] + "' ><img src='../images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='../images/document_delete.png' width='20px'></a>" + '</td></tr>');
+                                $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='http://www.reportninja.org/Editor/" + Array[6] + "' ><img src='images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='images/document_delete.png' width='20px'></a>" + '</td></tr>');
                             }
                             else {
-                                $("#tblContents").append('<tr><td>' + "<img src='../" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewMedia.html?FilePath=" + Array[6] + "' ><img src='../images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='../images/document_delete.png' width='20px'></a>" + '</td></tr>');
+                                $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='http://www.reportninja.org/Editor/" +Array[6] +"' ><img src='images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='images/document_delete.png' width='20px'></a>" + '</td></tr>');
                             }
                             }
                     }
@@ -107,10 +107,10 @@
 <body>
     <div>
         <h2>Media Library</h2>
-        <input type="submit" id="btnAddFiles" value="Select" />
-        <div id="AddMediaContent">
+        <input type="submit" id="btnAddFiles" value="Select Media File" />
+        <div id="AddMediaContent" style="display:none">
             <h4>Select File</h4>
-            <input id="fuFile" type="file" />
+            <input id="fuMediaFile" type="file" />
             <input type="text" id="txtDescription" placeholder="Add Description" />
             <input type="submit" value="save" id="btnSaveFile" />
         </div>

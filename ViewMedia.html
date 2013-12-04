@@ -7,13 +7,13 @@
     <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            //alert("yes");
+            alert("yes");
             //var Path = window.location.href.indexOf("?") + 1;
             var Path = 'http://www.reportninja.org/Editor/' + getUrlVars()["FilePath"];
             var Code = "<iframe src='http://docs.google.com/gview?url=" + Path + "&embedded=true' style='width:978px; height:395px;' frameborder='0'></iframe>";
            
-            //alert(Path);
-            //alert(Code);
+            alert(Path);
+            alert(Code);
            // $("ViewHtml").html(Code);
             document.getElementById("ViewHtml").innerHTML = Code;
         }

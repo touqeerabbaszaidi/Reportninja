@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+         <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
+         <script src="cordova-2.7.0.js" type="text/javascript"></script>
+         
+    <script type="text/javascript" charset="utf-8">
+    function uploadFile() {
+   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
+   var directoryReader = fs.root.createReader();
+   directoryReader.readEntries(function(entries) {
+   imageURI=entries[0].toURI(); // Selected File path
+   var options = new FileUploadOptions();
+   options.chunkedMode = false;
+   options.fileKey="file";
+   options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+   alert(options.fileName);
+   options.mimeType="text/plain";
+   var params = new Object();
+   params.value1 = "test";
+   params.value2 = "param";
+   options.params = params;
+   var ft = new FileTransfer();
+   ft.upload(imageURI, "http://mobile.reportninja.org/Upload.php", win, fail, options,true);
+   }, function (error) {
+      alert(error.code);
+   })}, function (error) {
+      alert(error.code);
+   });
+}
+ 
+function win(r) {
+   alert("success");
+   alert("Sent = " + r.bytesSent);
+}
+ 
+function fail(error) {
+   alert("error");
+   switch (error.code) {
+     case FileTransferError.FILE_NOT_FOUND_ERR:
+        alert("Photo file not found");
+        break;
+     case FileTransferError.INVALID_URL_ERR:
+       alert("Bad Photo URL");
+       break;
+     case FileTransferError.CONNECTION_ERR:
+       alert("Connection error");
+       break;
+   }
+   alert("An error has occurred: Code = " + error.code);
+}
+    </script>
+</head>
+<body>
+<div>
+<button onclick="uploadFile();">Upload File</button>
+
+</div>
+</body>
+</html>
+
