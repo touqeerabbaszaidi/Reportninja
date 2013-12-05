@@ -178,15 +178,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Reports").click(function () {
-                alert("Clic Reports");
+               // alert("Clic Reports");
                 MyReports();
             });
             $("#Log").click(function () {
-                alert("Click Log");
+               // alert("Click Log");
                 ActivityLog();
             });
             $("#Account").click(function () {
-                alert("click account");
+               // alert("click account");
                 MyAccount();
             });
             $("#LogOut").click(function () {
@@ -195,7 +195,7 @@
             fnMediaLibrary();
             document.getElementById("AddMediaContent").style.visibility = 'hidden';
             $("#btnAddFiles").click(function () {
-                alert("select");
+              //  alert("select");
                 document.getElementById("btnAddFiles").style.visibility = 'hidden';
                 document.getElementById("AddMediaContent").style.visibility = 'visible';
             }
@@ -311,7 +311,7 @@
         //Account function start
         function MyAccount() {
 
-            alert("Account");
+           // alert("Account");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             var Email = getUrlVars()["Email"];
