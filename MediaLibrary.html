@@ -44,8 +44,8 @@
             #sub_menu_top ul li {
                 list-style-type: none;
                 list-style-type: none;
-                float: left;
                 width: 100%;
+                float:left;
                 background-color: #3797d4;
                 margin-top: 1px;
                 height: 37px;
@@ -179,15 +179,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Reports").click(function () {
-               // alert("Clic Reports");
+                alert("Clic Reports");
                 MyReports();
             });
             $("#Log").click(function () {
-               // alert("Click Log");
+                alert("Click Log");
                 ActivityLog();
             });
             $("#Account").click(function () {
-               // alert("click account");
+                alert("click account");
                 MyAccount();
             });
             $("#LogOut").click(function () {
@@ -196,7 +196,7 @@
             fnMediaLibrary();
             document.getElementById("AddMediaContent").style.visibility = 'hidden';
             $("#btnAddFiles").click(function () {
-              //  alert("select");
+                alert("select");
                 document.getElementById("btnAddFiles").style.visibility = 'hidden';
                 document.getElementById("AddMediaContent").style.visibility = 'visible';
             }
@@ -210,8 +210,8 @@
             $.ajax({
 
                 type: "POST",
-                url: "http://www.mobile.reportninja.org/webservice.asmx/LoadMediaContents",
-               // url: "WebService.asmx/LoadMediaContents",
+               // url: "http://www.mobile.reportninja.org/webservice.asmx/LoadMediaContents",
+                url: "WebService.asmx/LoadMediaContents",
                 //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'userId':'"+ Id + "'}",
@@ -312,7 +312,7 @@
         //Account function start
         function MyAccount() {
 
-           // alert("Account");
+            alert("Account");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             var Email = getUrlVars()["Email"];
@@ -327,7 +327,7 @@
     </script>
 
 </head>
-<body>
+<body style="padding: 0px; margin: 0px; background-color: #F4F4F4;">
     <div class="header">
         <div class="header_container">
             <div class="menu_button" id="menu_button1" onclick="showDialog()">
@@ -338,7 +338,7 @@
 
                 </div>
                 <div class="my_reports_text">
-                    <p>My Reports</p>
+                    <p>Report Ninja</p>
                 </div>
             </div>
             <div id="sub_menu_top">
@@ -354,7 +354,7 @@
 
     </div>
     <div>
-        <h2>Media Library</h2>
+        <div class="PageHeadingTitle">Media Library</div>
         <input type="submit" id="btnAddFiles" value="Select Media File" />
         <div id="AddMediaContent" style="display: none;">
             <h4>Select File</h4>
@@ -363,7 +363,7 @@
             <input type="submit" value="save" id="btnSaveFile" />
         </div>
         <div class="GeneralSettingsDiv">
-            <table id="tblContents"  cellspacing="10" ></table>
+            <table id="tblContents" cellspacing="10"></table>
         </div>
 
     </div>

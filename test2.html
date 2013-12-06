@@ -5,7 +5,7 @@
     <style type="text/css">
 
         .home_container {
-            background-image: url('http://rnws1.2bvision.com/images/splash-background.png');
+            background-image: url('http://rnws1.2bvision.com/Images/splash-background.png');
 	        background-repeat: no-repeat;
 	        background-size: 100%;
 	        background-position:top;
@@ -48,7 +48,7 @@
             margin-top:1.5%;
         }
         .arrow {
-            background:url('images/arrow.png');
+            background:url('Images/arrow.png');
             height:17px;
             width:35px;
             
@@ -109,13 +109,18 @@
         {
            // alert("logReports");
             var Id = getUrlVars()["id"];
-            window.location = "log.htm?id=" + Id + "";
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "log.htm?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+            
         }
         function MediaLibrary() {
 
             var Id = getUrlVars()["id"];
-            //alert("Media");
-            window.location = "MediaLibrary.html?id=" + Id + "";
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+            
         }
 
         function getUrlVars() {

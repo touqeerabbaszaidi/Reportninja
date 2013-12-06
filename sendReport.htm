@@ -24,7 +24,7 @@
 
         .header {
             height: 45px;
-            background: url('images/header-bg.png') repeat-x;
+            background: url('Images/header-bg.png') repeat-x;
             width: 100%;
         }
 
@@ -40,10 +40,14 @@
 
         .logo {
             float: left;
-            background: url('images/logo.png') no-repeat;
+            background: url('Images/logo.png') no-repeat;
             height: 45px;
             width: 46px;
             margin-top: 0px;
+        }
+        #btnBack {
+            
+            margin-top: 10px;
         }
     </style>
 
@@ -65,14 +69,17 @@
             var reportGuid = getUrlVars()["reportGuid"];
             var versionGuid = getUrlVars()["versionGuid"];
             var pageGuid = getUrlVars()["pageGuid"];
-
+            var Email = getUrlVars()["Email"];
+            $("#btnBack").click(function () {
+                alert("yes");
+                window.location = "Home.html?id=" + userId + "&username=" + userName + "&Email=" + Email + "";
+            });
             $("#SubmitEmail").click(function () {
                // alert("1");
                 var Emails = document.getElementById('txtEmailReportEmails').value
                 $.ajax({
                     type: "POST",
-                     url: "http://www.mobile.reportninja.org/webservice.asmx/SendEmailReport",
-                    //url: "http://rnws1.2bvision.com/WebService.asmx/SendEmailReport",
+                    url: "http://rnws1.2bvision.com/WebService.asmx/SendEmailReport",
                    // url: "WebService.asmx/SendEmailReport",
                     //data: "{'id': '" + Id + "'}",
                     data: "{'username': '" + userName + "','userId':'" + userId + "','reportGuid':'" + reportGuid + "','versionGuid':'" + versionGuid + "','reportName':'" + reportName + "','topPageGuid':'" + pageGuid + "','Emails':'" + Emails + "'}",
@@ -84,7 +91,7 @@
                             var prods = response.d;
                             if (prods == "Success") {
                                 alert("Report has been successfully sent.");
-                                window.location = "Home.html?id=" + userId + "&username=" + userName + "";
+                                window.location = "Home.html?id=" + userId + "&username=" + userName + "&Email=" +Email +"";
                             }
                         }
                         else {
@@ -138,21 +145,23 @@
 
     </script>
 </head>
-<body style="padding: 0px; margin: 0px">
+<body style="padding: 0px; margin: 0px; background-color: #F4F4F4">
     <div class="header">
         <div class="header_container">
 
-
-        </div>-->
+            <div style="float:left; width:10%">
+                <input type="image" src="images/BACK.png" id="btnBack" />
+            </div>
+      
         <div class="header_right">
             <div class="logo">
 
             </div>
             <div class="my_reports_text">
-                <p>My Reports</p>
+                <p>Report Ninja</p>
             </div>
         </div>
-
+            </div>
     </div>
 
 

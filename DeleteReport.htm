@@ -14,6 +14,7 @@
             var reportGuid = getUrlVars()["reportGuid"];
             var versionGuid = getUrlVars()["versionGuid"];
             var pageGuid = getUrlVars()["pageGuid"];
+            var Email=getUrlVars()["Email"]
             $.ajax({
                 type: "POST",
                 //url:"http://rnws1.2bvision.com/WebService.asmx/deleteReport",
@@ -25,11 +26,11 @@
                 dataType: "json",
                 success: function (response) {
                     alert("Report Deleted");
-                    window.location = "Home.html?id=" + userId + "&username=" + userName + "";
+                    window.location = "Home.html?id=" + userId + "&username=" + userName + "&Email="+Email +"";
 
                     /*else {
-                    //alert("No data to display");
-                    //alert(response.d);
+                    alert("No data to display");
+                    alert(response.d);
                     }*/
                 },
                 error: function (e) {

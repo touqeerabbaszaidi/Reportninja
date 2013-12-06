@@ -45,8 +45,8 @@
             #sub_menu_top ul li {
                 list-style-type: none;
                 list-style-type: none;
-                float: left;
                 width: 100%;
+                float:left;
                 background-color: #3797d4;
                 margin-top: 1px;
                 height: 37px;
@@ -180,15 +180,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Reports").click(function () {
-               // alert("Clic Reports");
+                alert("Clic Reports");
                 MyReports();
             });
             $("#Account").click(function () {
-               // alert("Click Account");
+                alert("Click Account");
                 MyAccount();
             });
             $("#mediamibrary").click(function () {
-              //  alert("click media");
+                alert("click media");
                 MediaLibrary();
             });
             $("#LogOut").click(function () {
@@ -203,7 +203,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "http://www.mobile.reportninja.org/webservice.asmx/logReport",
+                 url: "http://www.mobile.reportninja.org/webservice.asmx/logReport",
                 //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
                // url: "WebService.asmx/logReport",
                 //data: "{'id': '" + Id + "'}",
@@ -567,7 +567,7 @@
         //Account function start
         function MyAccount() {
 
-           // alert("Account");
+            alert("Account");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             var Email = getUrlVars()["Email"];
@@ -589,7 +589,7 @@
     </script>
 
 </head>
-<body>
+<body style="padding: 0px; margin: 0px; background-color: #F4F4F4;">
     <div class="header">
         <div class="header_container">
             <div class="menu_button" id="menu_button1" onclick="showDialog()">
@@ -600,7 +600,7 @@
 
                 </div>
                 <div class="my_reports_text">
-                    <p>My Reports</p>
+                    <p>Report Ninja</p>
                 </div>
             </div>
             <div id="sub_menu_top">
@@ -615,7 +615,7 @@
         </div>
 
     </div>
-    <h3 style="color: #0066CC; font-size:18px">Activity Log</h3>
+    <div class="PageHeadingTitle">Activity Log</div>
     <div class="GeneralSettingsDiv">
         <table id="LogActivity"></table>
     </div>
