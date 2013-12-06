@@ -179,15 +179,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Reports").click(function () {
-                alert("Clic Reports");
+                //alert("Clic Reports");
                 MyReports();
             });
             $("#Log").click(function () {
-                alert("Click Log");
+                //alert("Click Log");
                 ActivityLog();
             });
             $("#Account").click(function () {
-                alert("click account");
+                //alert("click account");
                 MyAccount();
             });
             $("#LogOut").click(function () {
@@ -210,8 +210,8 @@
             $.ajax({
 
                 type: "POST",
-               // url: "http://www.mobile.reportninja.org/webservice.asmx/LoadMediaContents",
-                url: "WebService.asmx/LoadMediaContents",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/LoadMediaContents",
+               // url: "WebService.asmx/LoadMediaContents",
                 //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'userId':'"+ Id + "'}",
@@ -312,7 +312,7 @@
         //Account function start
         function MyAccount() {
 
-            alert("Account");
+           // alert("Account");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             var Email = getUrlVars()["Email"];
