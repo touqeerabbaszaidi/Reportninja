@@ -122,7 +122,13 @@
             window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
             
         }
-
+        function MyForms() {
+            alert("form");
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "MyForms.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+        }
         function getUrlVars() {
             var vars = [], hash;
             var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -167,6 +173,14 @@
                 <div class="button" id="Div3" onclick="MediaLibrary();">
                     <p>MEDIA LIBRARY</p>
                     </div>
+                <div class="arrow">
+
+                </div>
+            </div>
+            <div class="home_button">
+                <div class="button" id="Div4" onclick="MyForms();">
+                    <p>My Forms</p>
+                </div>
                 <div class="arrow">
 
                 </div>

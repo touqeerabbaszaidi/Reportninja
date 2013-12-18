@@ -180,6 +180,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
+            LoadAccountInfo();
             $("#Reports").click(function () {
                 //alert("Clic Reports");
                 MyReports();
@@ -228,6 +229,39 @@
 
         }
         );
+        function LoadAccountInfo() {
+            alert("yes");
+            var id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            alert(id)
+            $.ajax({
+
+                type: "POST",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/AccountDetail",
+               // url: "WebService.asmx/AccountDetail",
+                //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
+                //data: "{'id': '" + Id + "'}",
+                data: "{'UserId':'" + id + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response.d != null && response.d != "") {
+                        var prods = response.d;
+                        var MyArray = prods.split("%");
+                        var Array = MyArray[0].split("$");
+                        document.getElementById("txtPhone").value = Array[1];
+                        document.getElementById("txtAddress").value = Array[0];
+                       // document.getElementById("PAccountInfo").innerHTML = "You have a " + Array[2] + " account, expiring on " + Array[3] + ". To manage your payments please <b><a href='Payment'>click here</a></b>.";
+                        document.getElementById("PAccountInfo").innerHTML = Array[2] + ". To manage your payments please <b><a href='Payment.html?id=" + id + "&username=" + username + "&Email=" + Email + "'>click here</a></b>.";
+                    }
+                },
+                error: function (e) {
+                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                }
+
+            });
+        }
         function UpdateChanges() {
             var id = getUrlVars()["id"];
          //   alert("yes");
@@ -367,7 +401,8 @@
             <div class="LeftContentDiv">Address:</div>
             <div class="RightContentDiv">
                 <!--<asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" CssClass="TextAreaMedium"></asp:TextBox>-->
-                <input id="txtAddress" type="text" class="TextAreaMedium" />
+               <!--<input id="txtAddress" type="text" class="TextAreaMedium" />-->
+                <textarea id="txtAddress" class="TextAreaMedium"></textarea>
             </div>
             <div class="clear"></div>
             <div class="boxSaveButtonMid">
@@ -376,10 +411,12 @@
                 <!--<button id="btnUpdateChanges" type="submit"><img src="images/saveBtn.png"  onclick="UpdateChanges();"/></button>-->
                 <input type="image" src="images/saveBtn.png" id="btnUpdateChanges" onclick="UpdateChanges();" />
             </div>
-           
-           
             <div class="clear"></div>
-            <div class="clear"></div>
+            <div class="BlockHeadingTitle">Payment Settings</div>
+            <div class="LeftContentDiv">Account Detail:</div>
+            <div class="RightContentDiv">
+                <p id="PAccountInfo"></p>
+            </div>
         </div>
     </div>
     
