@@ -191,6 +191,9 @@
                 alert("click account");
                 MyAccount();
             });
+            $("#Forms").click(function () {
+                MyForms();
+            });
             $("#LogOut").click(function () {
                 UserLogOut();
             });
@@ -284,8 +287,8 @@
             $.ajax({
 
                 type: "POST",
-               // url: "http://www.mobile.reportninja.org/webservice.asmx/DeleteMediaContents",
-                url: "WebService.asmx/DeleteMediaContents",
+                url: "http://www.mobile.reportninja.org/webservice.asmx/DeleteMediaContents",
+               // url: "WebService.asmx/DeleteMediaContents",
                 //url: "http://rnws1.2bvision.com/WebService.asmx/UpdatePhAndAddressChanges",
                 //data: "{'id': '" + Id + "'}",
                 data: "{'MediaContentId':'" + MediaId + "'}",
@@ -349,6 +352,12 @@
             window.location = "Account.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
 
         }
+        function MyForms() {
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "MyForms.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+        }
 
         //Account function end
         function UserLogOut() {
@@ -374,9 +383,10 @@
             <div id="sub_menu_top">
                 <ul>
                     <li><a id="Reports" style="text-decoration:none;">MY REPORTS</a></li>
+                    <li><a id="Forms" style="text-decoration:none;">My Forms</a></li>
                     <li><a id="Account" style="text-decoration:none;">ACCOUNT</a></li>
                     <li><a id="Log" style="text-decoration:none;">LOG</a></li>
-                    <li><a id="mediamibrary" style="text-decoration:none;">MEDIA LIBRARY</a></li>
+                    <li><a  href="" id="mediamibrary" style="text-decoration:none;">MEDIA LIBRARY</a></li>
                     <li><a id="LogOut" style="text-decoration:none;">LOGOUT</a></li>
                 </ul>
             </div>
