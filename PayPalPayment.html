@@ -104,12 +104,12 @@
             });
         });
         function SubPlan() {
-            alert("yes");
+            //alert("yes");
             var Id = getUrlVars()["id"];
             var SubscriptionPlan = $("#ddlSubscription option:selected").text();
             var SubscriptionPlanValue = $("#ddlSubscription").val();
-            alert(SubscriptionPlan);
-            alert(SubscriptionPlanValue);
+           // alert(SubscriptionPlan);
+           // alert(SubscriptionPlanValue);
             $.ajax({
                 type: "POST",
                 url: "http://www.mobile.reportninja.org/webservice.asmx/IbtnPayPal_Click",
@@ -122,8 +122,9 @@
                     // alert("in load reports");
                     if (response.d != null && response.d != "") {
                         var prods = response.d;
-                        alert(prods);
-                       window.location = prods;
+                        //  alert(prods);
+                        var ref = window.open(prods, '_blank', 'location=yes');
+                      // window.location = prods;
                     }
                     else {
                         alert("No data to display");
