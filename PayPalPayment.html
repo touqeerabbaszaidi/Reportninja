@@ -5,6 +5,7 @@
     <script src="js/jquery-1.4.min.js"></script>
     <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.Storage.js"></script>
+    <script src="cordova-2.7.0.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.jsonp-2.1.3.min.js"></script>
     <link href="Styles/style.css" rel="stylesheet" />
     <link href="Styles/style111.css" rel="stylesheet" />
@@ -51,7 +52,7 @@
             margin-top: 10px;
         }
     </style>
-    <script type="text/javascript">
+    <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
@@ -73,15 +74,15 @@
                         var prods = response.d;
                         var myArray = prods.split("%");
                         var obj = document.getElementById("ddlSubscription");
-                       // alert(obj);
-                      //  alert(myArray.length);
+                        // alert(obj);
+                        //  alert(myArray.length);
                         for (var i = 0; i < myArray.length - 1; i++) {
                             var Array = myArray[i].split("#");
-                          //  alert(Array[0]);
+                            //  alert(Array[0]);
                             document.getElementById("ddlSubscription").innerHTML += " <option value='" + Array[0] + "'>" + Array[1] + "</option>";
                             //var opt = document.createElement("option");
-                          //  var opt = obj.createElement("option");
-                          //  opt.appendChild(document.createTextNode(value));
+                            //  var opt = obj.createElement("option");
+                            //  opt.appendChild(document.createTextNode(value));
                             //opt.selected = selected;
                             //opt.value = Array[1];
                             //opt.text = Array[0];
@@ -108,14 +109,14 @@
             var Id = getUrlVars()["id"];
             var SubscriptionPlan = $("#ddlSubscription option:selected").text();
             var SubscriptionPlanValue = $("#ddlSubscription").val();
-           // alert(SubscriptionPlan);
-           // alert(SubscriptionPlanValue);
+            // alert(SubscriptionPlan);
+            // alert(SubscriptionPlanValue);
             $.ajax({
                 type: "POST",
                 url: "http://www.mobile.reportninja.org/webservice.asmx/IbtnPayPal_Click",
-               // url: "WebService.asmx/IbtnPayPal_Click",
+                // url: "WebService.asmx/IbtnPayPal_Click",
                 //data: "{'id': '" + Id + "'}",
-                data: "{'Id':'" + Id +"','SubscriptinPlan':'" + SubscriptionPlan + "','SubscriptinPlanValue':'" + SubscriptionPlanValue + "'}",
+                data: "{'Id':'" + Id + "','SubscriptinPlan':'" + SubscriptionPlan + "','SubscriptinPlanValue':'" + SubscriptionPlanValue + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -124,7 +125,7 @@
                         var prods = response.d;
                         //  alert(prods);
                         var ref = window.open(prods, '_blank', 'location=yes');
-                      // window.location = prods;
+                        // window.location = prods;
                     }
                     else {
                         alert("No data to display");
