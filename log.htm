@@ -190,6 +190,8 @@
             $("#mediamibrary").click(function () {
                // alert("click media");
                 MediaLibrary();
+            }); $("#Forms").click(function () {
+                MyForms();
             });
             $("#LogOut").click(function () {
                 UserLogOut();
@@ -583,6 +585,12 @@
             var Email = getUrlVars()["Email"];
             window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
         }
+        function MyForms() {
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "MyForms.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+        }
         function UserLogOut() {
             window.location = "index.html";
         }
@@ -606,8 +614,9 @@
             <div id="sub_menu_top">
                 <ul>
                     <li><a id="Reports" style="text-decoration:none;">MY REPORTS</a></li>
+                    <li><a id="Forms" style="text-decoration:none;">My Forms</a></li>
                     <li><a id="Account" style="text-decoration:none;">ACCOUNT</a></li>
-                    <li><a id="Log" style="text-decoration:none;">LOG</a></li>
+                    <li><a href="" id="Log" style="text-decoration:none;">LOG</a></li>
                     <li><a id="mediamibrary" style="text-decoration:none;">MEDIA LIBRARY</a></li>
                     <li><a id="LogOut" style="text-decoration:none;">LOGOUT</a></li>
                 </ul>

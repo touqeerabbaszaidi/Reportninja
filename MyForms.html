@@ -171,22 +171,40 @@
 
         var flag = "true";
         $(document).ready(function () {
-
+            $("#Reports").click(function () {
+                //alert("Clic Reports");
+                MyReports();
+            });
+            $("#Log").click(function () {
+                //alert("Click Log");
+                ActivityLog();
+            });
+            $("#mediamibrary").click(function () {
+                //alert("click media");
+                MediaLibrary();
+            });
+            $("#Account").click(function () {
+                //alert("Clic Acount");
+                MyAccount();
+            });
+            $("#LogOut").click(function () {
+                UserLogOut();
+            });
             setTimeout(function () {
-                alert("before");
+                //alert("before");
                 funForms();
-                alert("after")
+               // alert("after")
             }, 1500);
         });
         function funForms() {
-            alert("Yes called");
+           // alert("Yes called");
             var Id = getUrlVars()["id"];
             var username = getUrlVars()["username"];
             var Email = getUrlVars()["Email"];
             //alert(Id);
 
             if (flag == "true") {
-                alert("flag");
+               // alert("flag");
                 $.ajax({
                     type: "POST",
                     url:"http://www.mobile.reportninja.org/webservice.asmx/LoadForms",
@@ -267,7 +285,48 @@
         });
 
     </script>
-    
+    <script type="text/javascript">
+        //Account function start
+        function MyAccount() {
+
+            //alert("Account");
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "Account.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+
+        }
+
+        //Account function end
+        //ActivityLog Function starts
+        function ActivityLog() {
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "log.htm?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+        }
+        //ActivityLog Function ends
+        // Media Library function starts
+        function MediaLibrary() {
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+        }
+        function MyReports() {
+
+
+            var Id = getUrlVars()["id"];
+            var username = getUrlVars()["username"];
+            var Email = getUrlVars()["Email"];
+            window.location = "Home.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+
+        }
+        function UserLogOut() {
+            window.location = "index.html";
+        }
+    </script>
+
 </head>
 
 <body style="margin: 0px; padding: 0px; background-color: #F4F4F4">
@@ -286,7 +345,8 @@
             </div>
             <div id="sub_menu_top">
                 <ul>
-                    <li><a href="" id="myReports" style="text-decoration:none;">MY REPORTS</a></li>
+                    <li><a id="myReports" style="text-decoration:none;">MY REPORTS</a></li>
+                    <li><a href="" id="Forms" style="text-decoration:none;">My Forms</a></li>
                     <li><a id="Account" style="text-decoration:none;">ACCOUNT</a></li>
                     <li><a id="Log" style="text-decoration:none;">LOG</a></li>
                     <li><a id="mediamibrary" style="text-decoration:none;">MEDIA LIBRARY</a></li>
