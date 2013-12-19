@@ -152,7 +152,7 @@ input[type="password"].TextBoxLarge, .TextBoxLarge
 .TextBoxLargeDDL
 {
     background:#F4F4F4;
-	width: 463px;
+	width: 80%;
 	height:37px;
 	color : #2D2D2D;
 	border:1px solid #CBCBCB;
