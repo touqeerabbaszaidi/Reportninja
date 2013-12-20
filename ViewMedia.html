@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <title></title>
     <script src="js/jquery-1.4.min.js"></script>
     <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.Storage.js"></script>
@@ -14,21 +15,21 @@
         function ready() {
             console.log("Thunderbirds are go!");
         }
-        $(document).ready(function () {
+       
             alert("yes");
-            var Id = getUrlVars()["id"];
-            var username = getUrlVars()["username"];
-            var Email = getUrlVars()["Email"];
+           
             //var Path = window.location.href.indexOf("?") + 1;
-            download();
-            alert("Media Downloaded Successfully");
-             window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+      
+            
             // $("ViewHtml").html(Code);
             //document.getElementById("ViewHtml").innerHTML = Code;
-        }
-            );
-        function download() {
-            var remoteFile = "http://www.reportninja.org/Editor/"+ getUrlVars()["FilePath"];
+       
+            function download() {
+                var Id = getUrlVars()["id"];
+                var username = getUrlVars()["username"];
+                var Email = getUrlVars()["Email"];
+            var remoteFile = "http://www.reportninja.org/Editor/" + getUrlVars()["FilePath"];
+            alert(remoteFile);
             var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1);
 
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
@@ -47,7 +48,10 @@
                         }, fail);
                 }, fail);
             }, fail);
+            alert("Media Downloaded Successfully");
+            window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
         }
+       
         function fail(error) {
             console.log(error.code);
         }
@@ -62,10 +66,10 @@
             return vars;
         }
     </script>
-    <title></title>
+    
 </head>
 <body>
-    <div id="ViewHtml" style="width:100%"></div>
+    <div id="ViewHtml" style="width:100%"> <a id="download" onclick="download();">click to download</a></div>
     <img src="" id="dwnldImg" style="display: none" />
 </body>
 </html>
