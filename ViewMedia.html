@@ -20,9 +20,15 @@
             var username = getUrlVars()["username"];
             var Email = getUrlVars()["Email"];
             //var Path = window.location.href.indexOf("?") + 1;
-            var remoteFile = 'http://www.reportninja.org/Editor/' + getUrlVars()["FilePath"];
-           
-            alert(remoteFile);
+            download();
+            alert("Media Downloaded Successfully");
+             window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
+            // $("ViewHtml").html(Code);
+            //document.getElementById("ViewHtml").innerHTML = Code;
+        }
+            );
+        function download() {
+            var remoteFile = "http://www.reportninja.org/Editor/"+ getUrlVars()["FilePath"];
             var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1);
 
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
@@ -34,19 +40,14 @@
                     var ft = new FileTransfer();
                     ft.download(remoteFile,
                         localPath, function (entry) {
-                            //var dwnldImg = document.getElementById("dwnldImg");
+                            var dwnldImg = document.getElementById("dwnldImg");
                             dwnldImg.src = entry.fullPath;
-                            dwnldImg.style.visibility = "visible";
+                            //dwnldImg.style.visibility = "visible";
                             dwnldImg.style.display = "block";
                         }, fail);
                 }, fail);
             }, fail);
-            alert("Media Downloaded Successfully");
-             window.location = "MediaLibrary.html?id=" + Id + "&username=" + username + "&Email=" + Email + "";
-            // $("ViewHtml").html(Code);
-            //document.getElementById("ViewHtml").innerHTML = Code;
         }
-            );
         function fail(error) {
             console.log(error.code);
         }
@@ -65,5 +66,6 @@
 </head>
 <body>
     <div id="ViewHtml" style="width:100%"></div>
+    <img src="" id="dwnldImg" style="display: none" />
 </body>
 </html>
