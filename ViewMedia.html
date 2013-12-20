@@ -46,6 +46,13 @@
                             //dwnldImg.style.visibility = "visible";
                             dwnldImg.style.display = "block";
                         }, fail);
+                      ft.onprogress = function (progressEvent) {
+                        if (progressEvent.lengthComputable) {
+                            loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+                        } else {
+                            loadingStatus.increment();
+                        }
+                    };
                 }, fail);
             }, fail);
             alert("Media Downloaded Successfully");
