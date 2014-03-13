@@ -180,15 +180,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Reports").click(function () {
-                alert("Clic Reports");
+               // alert("Clic Reports");
                 MyReports();
             });
             $("#Log").click(function () {
-                alert("Click Log");
+               // alert("Click Log");
                 ActivityLog();
             });
             $("#Account").click(function () {
-                alert("click account");
+               // alert("click account");
                 MyAccount();
             });
             $("#Forms").click(function () {
@@ -200,7 +200,7 @@
             fnMediaLibrary();
             document.getElementById("AddMediaContent").style.visibility = 'hidden';
             $("#btnAddFiles").click(function () {
-                alert("select");
+               // alert("select");
                 document.getElementById("btnAddFiles").style.visibility = 'hidden';
                 document.getElementById("AddMediaContent").style.visibility = 'visible';
             }
@@ -236,10 +236,10 @@
                             var Array = MyArray[i].split("$");
                             if (Array[2] == "image")
                                 {
-                                $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewMedia.html?FilePath=" + Array[6] + "&id="+ Id+"&username="+ username+"&Email="+ Email +"'><img src='images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='images/document_delete.png' width='20px'></a>" + '</td></tr>');
+                                $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewMedia.html?FilePath=" + Array[6] + "&id=" + Id + "&username=" + username + "&Email=" + Email + "'><img src='images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='images/document_delete.png' width='20px'></a>" + '</td><td style="padding-top:10px">' + "<a href='ShareMedia.html?id=" + Id + "&username=" + username + "&Email=" + Email + "&MLID=" + Array[5] + "&ImageName=" + Array[1] + "'><img src='images/properties.png' width='20px'></a>" + '</td></tr>');
                             }
                             else {
-                                $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewMedia.html?FilePath=" + Array[6] + "&id=" + Id + "&username=" + username + "&Email=" + Email + "'><img src='images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='images/document_delete.png' width='20px'></a>" + '</td></tr>');
+                                $("#tblContents").append('<tr><td>' + "<img src='" + Array[0] + "' height='42px' width='42px'>" + '</td><td Style="font-size: 12px; color: gray; vertical-align: top; padding-top: 4px; width:158px">' + Array[2] + " | " + Array[3] + " " + Array[1] + '</td><td style="padding-top:10px">' + "<a href='ViewMedia.html?FilePath=" + Array[6] + "&id=" + Id + "&username=" + username + "&Email=" + Email + "'><img src='images/view_text.png' width='20px' ></a> " + '</td><td style="padding-top:10px">' + "<a href='' id='" + Array[7] + "' onclick='DeleteMedia(" + Array[7] + ");'><img src='images/document_delete.png' width='20px'></a>" + '</td><td style="padding-top:10px">' + "<a href='ShareMedia.html?id=" + Id + "&username=" + username + "&Email=" + Email + "&MLID=" + Array[5] + "&ImageName=" + Array[1] + "'><img src='images/properties.png' width='20px'></a>" + '</td></tr>');
                             }
                             }
                     }
